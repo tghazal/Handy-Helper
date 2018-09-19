@@ -10,6 +10,11 @@ export default {
     {
         console.log("findUser")
         return  axios.post("/auth/login", user);
+    },
+    //this function should use axios to call url from server to get the data from database 
+    getUserInfo:function(email)
+    {
+        
     }
 
 }
