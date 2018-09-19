@@ -60,7 +60,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //api
-app.use(routes.api);
+// app.use(routes.api);
 
 //send react client folder for the front end
 app.get("*", function (req, res) {
