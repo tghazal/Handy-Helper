@@ -1,3 +1,3 @@
-module.exports = {
-  user: require('./user.model')
-}
+
+export {default} from "./models"
+
