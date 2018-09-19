@@ -3,12 +3,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const mongoose = require("mongoose");
-var cookieParser = require('cookie-parser')
+var cookieParser = require('cookie-parser');
 var jwt = require('express-jwt');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const apiRoutes=require("./routes/api.routes")
+const apiRoutes = require("./routes/api.routes")
 var authRoutes = require("./routes/auth.routes");
 
 
@@ -16,10 +16,10 @@ var authRoutes = require("./routes/auth.routes");
 const auth = jwt({
   secret: process.env.JWT_SECRET,
   userProperty: 'payload',
-  getToken: function fromHeaderOrCookie (req) {
+  getToken: function fromHeaderOrCookie(req) {
     if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
-      console.log("auth",req.headers.authorization.split(' ')[1]);
-        return req.headers.authorization.split(' ')[1];
+      console.log("auth", req.headers.authorization.split(' ')[1]);
+      return req.headers.authorization.split(' ')[1];
     }
     //  else if (req.cookies.token) {
     //    console.log("cook", req.cookies.token)
