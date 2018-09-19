@@ -59,8 +59,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-//api
-app.use(routes.api);
+
 
 //send react client folder for the front end
 app.get("*", function (req, res) {

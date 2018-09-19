@@ -2,31 +2,24 @@ import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/Header"
+import Navbar from "./components/Navbar";
 import Home from "./components/pages/Home"
 import Register from "./components/pages/Register"
 import Login from "./components/pages/Login"
-
+import Welcome from "./components/pages/Welcome"
 
 
 class App extends Component {
-//   handleLogout(){
-//     Auth.logout()
-//     this.props.history.replace('/login');
-//  }
+
   render() {
     return (
       <Router>
         <div className="container-fluid " >
-        {/* <div className="App-header">
-           
-            <h2>Welcome {this.props.user.username}</h2>
-        </div>
-        <p className="App-intro">
-            <button type="button" className="form-submit" onClick={this.handleLogout.bind(this)}>Logout</button>
-        </p> */}
        
+       <Navbar />
           <Header />
-          <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/" component={Welcome} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
         </div>
