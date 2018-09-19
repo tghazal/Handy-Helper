@@ -30,6 +30,7 @@ class Login extends Component {
             [name]: value
         });
     };
+    
 
     login =()=> {
         
