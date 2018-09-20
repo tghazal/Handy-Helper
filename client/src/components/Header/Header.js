@@ -1,12 +1,20 @@
 import React from 'react';
-import {
-  Navbar,
-  Nav,
-  NavItem,
-} from 'reactstrap';
+import { Navbar, Nav } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import AuthService from '../AuthService';
+
+//components
+import { Login, Logout } from './components';
+
+const Auth = new AuthService();
 
 class Header extends React.Component {
+  constructor() {
+    super();
+    this.Auth = new AuthService();
+    this.toggle = this.toggle.bind(this);
+  }
+
   state = {
     isOpen: false
   };
@@ -17,9 +25,12 @@ class Header extends React.Component {
     });
   }
 
-  render() {
-    this.toggle = this.toggle.bind(this);
+  handleLogout() {
+    Auth.logout()
+    this.props.history.replace('/login');
+  }
 
+  render() {
     return (
       <div className="bg-primary" >
         <div className="position-absolute w-100 text-center" style={{ zIndex: '9999', pointerEvents: 'none', marginTop: '10px' }}>
@@ -29,11 +40,9 @@ class Header extends React.Component {
           <div className="row">
             <div className="col px-0">
               <Navbar color="primary" light expand="md">
-                <Link to="/" className="navbar-brand">HH</Link>
+                <Link to={localStorage.getItem('id_token') ? '/home' : '/'} className="navbar-brand">HH</Link>
                 <Nav className="ml-auto" navbar>
-                  <NavItem style={{ cursor: 'pointer' }}>
-                    <Link to="/login" className="nav-link">Login</Link>
-                  </NavItem>
+                  {localStorage.getItem('id_token') ? <Logout onClick={this.handleLogout.bind(this)} /> : <Login />}
                 </Nav>
               </Navbar>
             </div>

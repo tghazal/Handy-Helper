@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import "./Home.css";
 import withAuth from '../../withAuth';
 import AuthService from '../../AuthService';
 import { Link } from 'react-router-dom';
-
-const Auth = new AuthService();
 
 class Home extends Component {
 
@@ -13,10 +10,7 @@ class Home extends Component {
     this.Auth = new AuthService();
   }
 
-  handleLogout() {
-    Auth.logout()
-    this.props.history.replace('/login');
-  }
+
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -68,7 +62,6 @@ class Home extends Component {
               <h2>Welcome {this.state.name} </h2>
               <h2>Email {this.state.email}</h2>
               <p className="App-intro">
-                <button type="button" className="form-submit" onClick={this.handleLogout.bind(this)}>Logout</button>
               </p>
             </div>
             <div className="col d-flex align-items-center justify-content-center">
