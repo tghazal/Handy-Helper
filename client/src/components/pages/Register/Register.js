@@ -8,7 +8,7 @@ class Register extends Component {
         name: "",
         email: "",
         password: ""
-        
+
     }
     // Handles updating component state when the user types into the input field
     handleInputChange = event => {
@@ -18,11 +18,11 @@ class Register extends Component {
         });
     };
 
-     register =()=> {
-         let user ={name:this.state.name, email:this.state.email , password:this.state.password}
+    register = () => {
+        let user = { name: this.state.name, email: this.state.email, password: this.state.password }
         API.registerUser(user)
-        .then(res =>  this.props.history.replace('/login'))
-        .catch(err => console.log(err));
+            .then(res => this.props.history.replace('/login'))
+            .catch(err => console.log(err));
     }
 
     render() {
@@ -32,9 +32,8 @@ class Register extends Component {
                     <div className="col-md-9 mx-auto   mt-2">
                         <div className="card">
                             <div className="card-header tet-center" >
-                               Register
+                                Register
                      </div>
-                            <h5 className="card-title"></h5>
                             <div className="card-body">
                                 <div className="form-group">
                                     <input className="form-control"

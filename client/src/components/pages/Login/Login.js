@@ -1,26 +1,24 @@
 import React, { Component } from "react";
 import "./Login.css";
 import AuthService from '../../AuthService';
-import API from "../../../utils/API";
-
 
 class Login extends Component {
 
-    constructor(){
+    constructor() {
         super();
         this.handleInputChange = this.handleInputChange.bind(this);
         this.Auth = new AuthService();
     }
 
     state = {
-      user:"",
-      email:"",
-      password:""
-        
+        user: "",
+        email: "",
+        password: ""
+
     }
 
-    componentWillMount(){
-        if(this.Auth.loggedIn())
+    componentWillMount() {
+        if (this.Auth.loggedIn())
             this.props.history.replace('/home');
     }
     // Handles updating component state when the user types into the input field
@@ -30,18 +28,18 @@ class Login extends Component {
             [name]: value
         });
     };
-    
 
-    login =()=> {
-        
-        this.Auth.login(this.state.email,this.state.password)
-            .then(res =>{
-               this.props.history.replace('/home');
+
+    login = () => {
+
+        this.Auth.login(this.state.email, this.state.password)
+            .then(res => {
+                this.props.history.replace('/home');
             })
-            .catch(err =>{
+            .catch(err => {
                 alert(err);
             })
-      
+
     }
 
     render() {
@@ -51,9 +49,8 @@ class Login extends Component {
                     <div className="col-md-9 mx-auto   mt-2">
                         <div className="card">
                             <div className="card-header tet-center" >
-                               Login
+                                Login
                             </div>
-                            <h5 className="card-title"></h5>
                             <div className="card-body">
                                 <div className="form-group">
                                     <input className="form-control"
@@ -63,7 +60,7 @@ class Login extends Component {
                                         placeholder="Email"
                                     />
                                 </div>
-                            
+
                                 <div className="form-group">
                                     <input className="form-control"
                                         value={this.state.topic}
@@ -73,7 +70,7 @@ class Login extends Component {
                                     />
                                 </div>
                                 <button style={{ backgroundColor: "#732c7b" }} className="btn text-light"
-                                    disabled={!(this.state.email &&  this.state.password)}
+                                    disabled={!(this.state.email && this.state.password)}
                                     onClick={this.login}
                                 >
                                     Log In
