@@ -23,6 +23,7 @@ class Register extends Component {
         API.registerUser(user)
             .then(res => this.props.history.replace('/login'))
             .catch(err => console.log(err));
+           
     }
 
     render() {
