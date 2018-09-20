@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import withAuth from '../../withAuth';
 import AuthService from '../../AuthService';
 import { Link } from 'react-router-dom';
+import Skills from "../../Skills"
 
 class Home extends Component {
 
@@ -28,7 +29,7 @@ class Home extends Component {
 
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     //call the function to retrive user info 
     this.getUserInfo();
     //get user email and name from the token through getProfile function
@@ -36,9 +37,18 @@ class Home extends Component {
     console.log(this.Auth.getProfile())
   }
 
+  addSkill = () => {
+   // API.updateSkills(this.state.email,this.state.skill)
+    let tempSkillArray = this.state.skills;
+    tempSkillArray.push(this.state.skill);
+    this.setState({ skills: tempSkillArray })
+    console.log(this.state.skills)
+    this.setState({skill:""})
+  }
+
   state = {
     skill: "",
-    skills: [],
+    skills: ["test1","test2"],
     email: "",
     phone: "",
     name: "",
@@ -76,36 +86,9 @@ class Home extends Component {
                 <div className="col-md-12">
                   <img src="https://cdn.tutsplus.com/net/uploads/legacy/958_placeholders/placehold.gif" className="img-responsive" alt="Cinque Terre" />
                 </div>
-                <p>Name</p>
-                <div className="col-md-12">
-                  <div className="card">
-                    <div className="card-header tet-center" >
-                      skills
-                     </div>
-                  </div>
-                </div>
+                <p>{this.state.name}</p>
+                <Skills skills={this.state.skills} skill={this.state.skill} onChange={this.handleInputChange} onClick={this.addSkill} />
               </div>
-
-              {/* <h5 className="card-title"></h5>
-            <div className="card-body">
-              <div className="form-group">
-                <input className="form-control"
-                  value={this.state.topic}
-                  onChange={this.handleInputChange}
-                  name="skill"
-                  placeholder="skill"
-                />
-                
-              </div>
-
-              <button style={{ backgroundColor: "#732c7b" }} className="btn text-light"
-                disabled={!(this.state.skill)}
-                onClick={this.login}
-              >
-                Add Skill
-              </button>
-            </div> */}
-
             </div>
             <div className="col-md-6 mx-auto   mt-2">
               <div className="row">
