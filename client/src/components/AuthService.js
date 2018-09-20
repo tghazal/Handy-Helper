@@ -1,6 +1,6 @@
 import decode from 'jwt-decode';
 import API from "../utils/API"
-import axios from "axios";
+
 export default class AuthService {
     // Initializing important variables
     constructor() {
@@ -11,14 +11,14 @@ export default class AuthService {
 
     login(email1, password1) {
         alert(email1)
-    
-        let user ={email:email1,password:password1}
-      return  API.findUser(user)
-            .then(res => { 
-                       console.log(res)
+
+        let user = { email: email1, password: password1 }
+        return API.findUser(user)
+            .then(res => {
+                console.log(res)
                 this.setToken(res.data.token) // Setting the token in localStorage
-        
-               
+
+
             })
             .catch(err => console.log(err));
 

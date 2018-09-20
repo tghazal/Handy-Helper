@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/Header"
-import Navbar from "./components/Navbar";
 import Home from "./components/pages/Home";
-import SearchJobs from "./components/pages/SearchJobs/SearchJobs";
+import SearchJobs from "./components/pages/SearchJobs";
 import Register from "./components/pages/Register"
 import Login from "./components/pages/Login"
 import Welcome from "./components/pages/Welcome"
@@ -15,9 +14,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="container-fluid " >
-
-          <Navbar />
+        <div>
           <Header />
           <Route exact path="/home" component={Home} />
           <Route exact path="/search-jobs" component={SearchJobs} />
@@ -25,7 +22,7 @@ class App extends Component {
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
         </div>
-      </Router>
+      </Router >
     );
   }
 }
