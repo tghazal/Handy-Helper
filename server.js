@@ -46,13 +46,9 @@ app.use(apiRoutes)
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/handydb";
 
-// Set mongoose to leverage built in JavaScript ES6 Promises
-
 // Connect to the Mongo DB
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI, {
-  useMongoClient: true
-});
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+mongoose.set('useCreateIndex', true);
 
 // Serve up static assets
 if (process.env.NODE_ENV === "production") {

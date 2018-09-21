@@ -3,21 +3,21 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Job = require('./job.model');
 
-const userDataSchema = new Schema({
+const UserDataSchema = new Schema({
   firstName: String,
   lastName: String,
   email: String,
   photo: String,
   phone: Number,
-  skills:[{id:Number, skill:String}],
-  address: 
-    {
-      address1: String,
-      address2: String,
-      city: String,
-      state: String,
-      zip: Number
-    }
+  skills: [{ id: Number, skill: String }],
+  address:
+  {
+    address1: String,
+    address2: String,
+    city: String,
+    state: String,
+    zip: Number
+  }
   ,
   jobs: [
     {
@@ -40,6 +40,6 @@ const userDataSchema = new Schema({
   ]
 });
 
-const UserData = mongoose.model("UserData", userDataSchema);
+const UserData = mongoose.model("UserData", UserDataSchema);
 
 module.exports = UserData;

@@ -15,7 +15,6 @@ export default class AuthService {
         let user = { email: email1, password: password1 }
         return API.findUser(user)
             .then(res => {
-                console.log(res)
                 this.setToken(res.data.token) // Setting the token in localStorage
 
 
