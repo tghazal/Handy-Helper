@@ -8,8 +8,6 @@ class Welcome extends Component {
     return (
 
       <div className="container-fluid " >
-
-
         <div className="overlay"><h1>Overlay Text</h1></div>
         <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
           <div className="carousel-inner">
@@ -61,7 +59,7 @@ class Welcome extends Component {
         </div>
 
 
-        <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <div className="footer-copyright text-center py-3">© 2018 Copyright:
       <a href="/"> Handy Helper</a>
         </div>
 
