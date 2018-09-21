@@ -12,8 +12,8 @@ class Welcome extends Component {
     return (
 
       <div className="container-fluid">
-        <div class="row justify-content-between form-group">
-          <div class="col-md-4">
+        <div class="row justify-content-between form-group justify-content-around">
+          <div class="col-md-3">
             <Card>
               <CardBody>
                 <CardTitle>First Last</CardTitle>
@@ -27,7 +27,7 @@ class Welcome extends Component {
               </div>
             </Card>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-5">
             <ListGroup>
               <ListGroupItem>Pending 1</ListGroupItem>
               <ListGroupItem>Pending 2</ListGroupItem>
@@ -37,8 +37,8 @@ class Welcome extends Component {
             </ListGroup>
           </div>
         </div>
-        <div class="row justify-content-between">
-          <div class="col-md-4">
+        <div class="row justify-content-between justify-content-around">
+          <div class="col-md-3">
             <ListGroup>
               <ListGroupItem>Skill 1</ListGroupItem>
               <ListGroupItem>Skill 2</ListGroupItem>
@@ -47,7 +47,7 @@ class Welcome extends Component {
               <ListGroupItem>Skill 5</ListGroupItem>
             </ListGroup>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-5">
             <ListGroup>
               <ListGroupItem>Search 1</ListGroupItem>
               <ListGroupItem>Search 2</ListGroupItem>
