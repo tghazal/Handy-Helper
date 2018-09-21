@@ -10,19 +10,20 @@ class Skills extends Component {
                     <div className="card-header text-center" >
                         skills
                     </div>
-                    <h5 className="card-title"></h5>
                     <div className="card-body">
-                        {this.props.skills.length ? (
-                            <ul >
-                                {this.props.skills.map(skill => (
-                                    <li className="bg-light  ">
-                                        <h2>  {skill}</h2>
-                                    </li>
-                                ))}
-                            </ul>
-                        ) : (
+                        {this.props.skills.length ?
+                            (
+                                <ul >
+                                    {this.props.skills.map((skill, index) => (
+                                        <li className="bg-light" key={`skill${index}`}>
+                                            <h2>{skill}</h2>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )
+                            :
+                            (
                                 <h3>No Skills to Display </h3>
-
                             )}
                         <div className="form-group">
                             <input className="form-control"
