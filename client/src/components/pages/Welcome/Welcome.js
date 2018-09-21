@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+import React from 'react';
+import { Jumbotron, Button } from 'reactstrap';
 import "./Welcome.css";
+
 
 
 class Welcome extends Component {
@@ -58,12 +60,11 @@ class Welcome extends Component {
 
 
       </div>
-    );
-  }
-}
+      <div class="footer-copyright text-center py-3">© 2018 Copyright:
+            <a href="/"> Handy Helper</a>
+      </div>
+    </div>
+  );
+};
+
 export default Welcome;
-
-
-
-//export default withAuth(App);
-
