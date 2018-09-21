@@ -6,11 +6,11 @@ class Login extends React.Component {
   render() {
     return (
       <NavItem style={{ cursor: 'pointer' }}>
-        <div className="btn btn-primary p-0">
-          <Link to="/login" className="nav-link">
+        <Link to="/login" className="nav-link p-0">
+          <div className="btn btn-primary border rounded">
             Login
-          </Link>
-        </div>
+          </div>
+        </Link>
       </NavItem >
     )
   }

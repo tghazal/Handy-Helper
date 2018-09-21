@@ -35,7 +35,6 @@ class Home extends Component {
     this.getUserInfo();
     //get user email and name from the token through getProfile function
     this.setState({ name: this.Auth.getProfile().name, email: this.Auth.getProfile().email })
-    console.log(this.Auth.getProfile())
   }
 
   addSkill = () => {
@@ -85,11 +84,11 @@ class Home extends Component {
             <div className="col-md-6   mt-2">
               <div className="row">
                 <div className="col-md-6 picture">
-                  
-                    <img width="100%" src="https://cdn.tutsplus.com/net/uploads/legacy/958_placeholders/placehold.gif" className="img-responsive" alt="Cinque Terre" />
-                    <div className="middle">
-                      <a> + </a>
-                    
+
+                  <img width="100%" src="https://cdn.tutsplus.com/net/uploads/legacy/958_placeholders/placehold.gif" className="img-responsive" alt="Cinque Terre" />
+                  <div className="middle">
+                    <a> + </a>
+
                   </div>
                 </div>
                 <p>{this.state.name}</p>

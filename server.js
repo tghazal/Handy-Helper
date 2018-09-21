@@ -1,4 +1,5 @@
 require("dotenv").config();
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -10,8 +11,6 @@ const PORT = process.env.PORT || 3001;
 
 const apiRoutes = require("./routes/api.routes")
 var authRoutes = require("./routes/auth.routes");
-
-
 
 const auth = jwt({
   secret: process.env.JWT_SECRET,
@@ -28,6 +27,7 @@ const auth = jwt({
     return null;
   }
 });
+
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -36,30 +36,25 @@ app.use(bodyParser.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+//auth routes
 app.use("/auth", authRoutes);
 app.use(auth);
 
 // Add routes, both API and view
 app.use(apiRoutes)
 
-
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/handydb";
 
-// Set mongoose to leverage built in JavaScript ES6 Promises
-
 // Connect to the Mongo DB
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI, {
-  useMongoClient: true
-});
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+mongoose.set('useCreateIndex', true);
 
 // Serve up static assets
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-
-
 
 //send react client folder for the front end
 app.get("*", function (req, res) {
