@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import withAuth from '../../withAuth';
+import "./Home.css"
 import AuthService from '../../AuthService';
 import { Link } from 'react-router-dom';
 import Skills from "../../Skills"
@@ -38,17 +39,17 @@ class Home extends Component {
   }
 
   addSkill = () => {
-   // API.updateSkills(this.state.email,this.state.skill)
+    // API.updateSkills(this.state.email,this.state.skill)
     let tempSkillArray = this.state.skills;
     tempSkillArray.push(this.state.skill);
     this.setState({ skills: tempSkillArray })
     console.log(this.state.skills)
-    this.setState({skill:""})
+    this.setState({ skill: "" })
   }
 
   state = {
     skill: "",
-    skills: ["test1","test2"],
+    skills: ["test1", "test2"],
     email: "",
     phone: "",
     name: "",
@@ -83,8 +84,13 @@ class Home extends Component {
           <div className="row">
             <div className="col-md-6   mt-2">
               <div className="row">
-                <div className="col-md-12">
-                  <img src="https://cdn.tutsplus.com/net/uploads/legacy/958_placeholders/placehold.gif" className="img-responsive" alt="Cinque Terre" />
+                <div className="col-md-6 picture">
+                  
+                    <img width="100%" src="https://cdn.tutsplus.com/net/uploads/legacy/958_placeholders/placehold.gif" className="img-responsive" alt="Cinque Terre" />
+                    <div className="middle">
+                      <a> + </a>
+                    
+                  </div>
                 </div>
                 <p>{this.state.name}</p>
                 <Skills skills={this.state.skills} skill={this.state.skill} onChange={this.handleInputChange} onClick={this.addSkill} />

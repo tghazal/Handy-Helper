@@ -20,9 +20,15 @@ class Register extends Component {
 
     register = () => {
         let user = { name: this.state.name, email: this.state.email, password: this.state.password }
+        // API.createUserProfile(user)
+        // .then(res =>console.log("user added to userData"))
+        // .catch(err => console.log(err));
+
         API.registerUser(user)
             .then(res => this.props.history.replace('/login'))
             .catch(err => console.log(err));
+       
+       
            
     }
 

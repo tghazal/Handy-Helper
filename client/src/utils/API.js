@@ -15,6 +15,11 @@ export default {
     getUserInfo:function(email)
     {
         
+    },
+    createUserProfile :function(user)
+    {
+        return  axios.post("/api/register", user);
+
     }
 
 }
