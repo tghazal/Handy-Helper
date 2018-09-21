@@ -47,18 +47,11 @@ class Welcome extends Component {
         </div>
         <div className="main-text hidden-xs">
           <div className="col-md-12 text-center">
-            <h1>
-              Static Headline And Content</h1>
             <h3>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </h3>
-            <div className="">
-              <a className="btn btn-clear btn-sm btn-min-block" href="http://www.jquery2dotnet.com/">Login</a><a className="btn btn-clear btn-sm btn-min-block"
-                href="http://www.jquery2dotnet.com/">Registration</a></div>
+            </h3>
           </div>
         </div>
-
-
         <div className="footer-copyright text-center py-3">© 2018 Copyright:
       <a href="/"> Handy Helper</a>
         </div>

@@ -29,9 +29,7 @@ class Login extends Component {
         });
     };
 
-
     login = () => {
-
         this.Auth.login(this.state.email, this.state.password)
             .then(res => {
                 this.props.history.replace('/home');
@@ -39,16 +37,19 @@ class Login extends Component {
             .catch(err => {
                 alert(err);
             })
+    }
 
+    goToRegisterPage() {
+        window.location.href = window.location.origin + '/register'
     }
 
     render() {
         return (
-            <div className="container-fluid">
-                <div className="row mx-auto ">
-                    <div className="col-md-9 mx-auto   mt-2">
+            <div className="container">
+                <div className="row">
+                    <div className="col-12 col-lg-6 mt-3">
                         <div className="card">
-                            <div className="card-header tet-center" >
+                            <div className="card-header text-center" >
                                 Login
                             </div>
                             <div className="card-body">
@@ -69,7 +70,7 @@ class Login extends Component {
                                         placeholder="Password"
                                     />
                                 </div>
-                                <button style={{ backgroundColor: "#732c7b" }} className="btn text-light"
+                                <button className="btn text-light btn-primary"
                                     disabled={!(this.state.email && this.state.password)}
                                     onClick={this.login}
                                 >
@@ -78,8 +79,23 @@ class Login extends Component {
                             </div>
                         </div>
                     </div>
+                    <div className="col-12 col-lg-6 mt-3">
+                        <div className="card h-100">
+                            <div className="card-header text-center" >
+                                Register
+                            </div>
+                            <div className="card-body d-flex flex-column justify-content-between">
+                                <div>Register here.</div>
+                                <div>
+                                    <button className="btn text-light btn-primary" onClick={this.goToRegisterPage.bind(this)}>
+                                        Register
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </div >
         );
     }
 }
