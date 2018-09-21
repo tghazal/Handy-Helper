@@ -8,7 +8,10 @@ class Navbar extends Component {
       <nav>
         <ul className="nav justify-content-end">
           <li className="nav-item">
-            <a className="nav-link active" href="#">Welcome</a>
+            <a className="nav-link active" href="/">Welcome</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/register">Register</a>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="/login">Log In</a>
