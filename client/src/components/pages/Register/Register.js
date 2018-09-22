@@ -36,7 +36,75 @@ class Register extends Component {
     render() {
         return (
             <div className="container">
-                <div className="row">
+
+
+
+
+                <div class="container py-5">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="text-center text-black mb-4">Need Help?</h2>
+                            <div class="row">
+                                <div class="col-md-6 mx-auto">
+
+
+                                    <div class="card rounded-0">
+                                        <div class="card-header">
+                                            <h3 class="mb-0">Register</h3>
+                                        </div>
+                                        <div className="card-body">
+                                            <div className="form-group">
+                                                <input className="form-control"
+                                                    value={this.state.topic}
+                                                    onChange={this.handleInputChange}
+                                                    name="email"
+                                                    placeholder="Email"
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <input className="form-control"
+                                                    value={this.state.topic}
+                                                    onChange={this.handleInputChange}
+                                                    name="name"
+                                                    placeholder="Name"
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <input className="form-control"
+                                                    value={this.state.topic}
+                                                    onChange={this.handleInputChange}
+                                                    name="password"
+                                                    placeholder="Password"
+                                                />
+                                            </div>
+                                            <button className="btn btn-primary" disabled={!(this.state.email && this.state.name && this.state.password)} onClick={this.register}>
+                                                Register
+                            </button>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+                {/* <div className="row">
                     <div className="col-12 col-lg-6 mt-3">
                         <div className="card">
                             <div className="card-header text-center" >
@@ -88,7 +156,7 @@ class Register extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         );
     }
