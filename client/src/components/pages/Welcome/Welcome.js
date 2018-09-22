@@ -11,7 +11,7 @@ const Welcome = (props) => {
 
       <Jumbotron>
         <div className="main-text hidden-xs" id="jumbo">
-          <div className="col-md-12 text-center">
+          <div className="col-md-12 text-center transbox">
             <br /><br />
             <h1 className="title font-weight-bold" style={{ "color": "rgb(196, 18, 18)", "font-size":"100px" }}><strong>Need Help?</strong></h1>
             <br /><br /><br />
@@ -23,6 +23,10 @@ const Welcome = (props) => {
           </div>
         </div>
       </Jumbotron>
+
+              <div class="footer-copyright text-center ">© 2018 Copyright:
+      <a href="/"> Handy Helper</a>
+        </div>
 
 
 
