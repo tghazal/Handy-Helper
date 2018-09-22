@@ -4,6 +4,7 @@ import "./Home.css"
 import AuthService from '../../AuthService';
 import { Link } from 'react-router-dom';
 import Skills from "../../Skills"
+import API from "../../../utils/API";
 
 class Home extends Component {
 
@@ -22,31 +23,36 @@ class Home extends Component {
   };
 
   // here is the function to retrieve user info from database using user email and set the data to the states 
-  getUserInfo = () => {
+  getUserInfo = (email) => {
 
-    // API.getUserInfo(this.state.email)
-    // .then(res => console.log(res))//here we retrive the data and set state each with its value 
-    // .catch(err => console.log(err));
+    API.getUserInfoFromDB(email)
+    .then(res => this.setState({skills:res.data.skills,id:res.data._id}))//here we retrive the data and set state each with its value 
+    .catch(err => console.log(err));
 
   }
 
   componentDidMount = () => {
     //call the function to retrive user info 
-    this.getUserInfo();
+    this.getUserInfo(this.Auth.getProfile().email);
     //get user email and name from the token through getProfile function
     this.setState({ name: this.Auth.getProfile().name, email: this.Auth.getProfile().email })
   }
 
   addSkill = () => {
-    // API.updateSkills(this.state.email,this.state.skill)
+   
+
     let tempSkillArray = this.state.skills;
     tempSkillArray.push(this.state.skill);
+  //   API.updateSkills(this.state.skills,this.state.id)
+  //   .then(res => this.setState({skills:res.data.skills}))//here we retrive the data and set state each with its value 
+  //  .catch(err => console.log(err));
     this.setState({ skills: tempSkillArray })
     console.log(this.state.skills)
     this.setState({ skill: "" })
   }
 
   state = {
+    id:"",
     skill: "",
     skills: ["test1", "test2"],
     email: "",
@@ -87,7 +93,7 @@ class Home extends Component {
 
                   <img width="100%" src="https://cdn.tutsplus.com/net/uploads/legacy/958_placeholders/placehold.gif" className="img-responsive" alt="Cinque Terre" />
                   <div className="middle">
-                    <a> + </a>
+                  <h1><ion-icon name="add-circle-outline"></ion-icon></h1>
 
                   </div>
                 </div>
