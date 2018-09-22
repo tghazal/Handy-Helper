@@ -19,13 +19,13 @@ const UserDataSchema = new Schema({
     zip: Number
   }
   ,
-  jobs: [
+  myJobs: [
     {
       type: Schema.Types.ObjectId,
       ref: Job
     }
   ],
-  bids: [
+  myBids: [
     {
       type: Schema.Types.ObjectId,
       ref: Job

@@ -43,11 +43,13 @@ class Home extends Component {
 
     let tempSkillArray = this.state.skills;
     tempSkillArray.push(this.state.skill);
+
     //   API.updateSkills(this.state.skills,this.state.id)
     //   .then(res => this.setState({skills:res.data.skills}))//here we retrive the data and set state each with its value 
     //  .catch(err => console.log(err));
     this.setState({ skills: tempSkillArray })
     console.log(this.state.skills)
+
     this.setState({ skill: "" })
   }
 
@@ -80,6 +82,10 @@ class Home extends Component {
               <p className="App-intro">
               </p>
             </div>
+
+             <div className="col d-flex align-items-center justify-content-center">
+              <Link to="/post-job"><button className="btn btn-primary btn-block">Post Jobs</button></Link>
+            </div>
             <div className="col d-flex align-items-center justify-content-center">
               <Link to="/search-jobs"><button className="btn btn-block lettercolor2 buttoncolor">Search Jobs</button></Link>
             </div>
@@ -103,12 +109,12 @@ class Home extends Component {
               <div className="row">
                 <div className="col-md-12">
                   <div className="card-header tet-center" >
-                    bids
+                   My Jobs
           </div>
                 </div>
                 <div className="col-md-12">
                   <div className="card-header tet-center" >
-                    Jobs
+                   My bids
           </div>
                 </div>
                 <div className="col-md-12">
