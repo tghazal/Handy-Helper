@@ -83,7 +83,7 @@ class Login extends Component {
                                         >
                                             Log In
                                         </button>
-                                        <h6>Don't hava an account?</h6>
+                                        <h6>Don't have an account?</h6>
                                         <button className="btn text-light btn-primary" onClick={this.goToRegisterPage.bind(this)}>
                                         Register Here
                                     </button>
