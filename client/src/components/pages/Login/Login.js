@@ -14,7 +14,6 @@ class Login extends Component {
         user: "",
         email: "",
         password: ""
-
     }
 
     componentWillMount() {
