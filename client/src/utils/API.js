@@ -9,12 +9,16 @@ export default {
         return axios.post("/auth/login", user);
     },
     //this function should use axios to call url from server to get the data from database 
-    getUserInfo: function (email) {
+    getUserInfoFromDB: function (email) {
+        console.log("in API email is "+email)
+        return axios.get("/api/getUserInfo/"+email)
 
     },
-    createUserProfile: function (user) {
-        return axios.post("/api/register", user);
+    updateSkills :function( skills, id )
 
+    {
+        let data={skills:skills,id:id}
+        console.log(data)
+        return axios.post("/api/updateSkills/",data)
     }
-
 }

@@ -11,12 +11,17 @@ export default class AuthService {
 
     login(email1, password1) {
         alert(email1)
+        const headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
 
         let user = { email: email1, password: password1 }
         return API.findUser(user)
             .then(res => {
                 this.setToken(res.data.token) // Setting the token in localStorage
-
+                 headers['Authorization'] = 'Bearer ' + this.getToken()
+               
 
             })
             .catch(err => console.log(err));
