@@ -1,4 +1,12 @@
-.main-text
+.jumbotron
+{
+    background-image: url("./handyImage9.jpeg");
+    height:600px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  };
+
+  .main-text
 {
     position: absolute;
     top: 50px;
@@ -12,13 +20,27 @@
 }
 .btn-clear
 {
-    color: #FFF;
+    color: rgb(196, 18, 18);
     background-color: transparent;
-    border-color: #FFF;
+    border-color: rgb(196, 18, 18);
     margin-right: 15px;
 }
 .btn-clear:hover
 {
-    color: #000;
-    background-color: #FFF;
-}
+    color: #FFF;
+    background-color: rgb(196, 18, 18);
+};
+
+
+
+
+
+
+
+
+
+  
+
+
+
+ 
