@@ -7,7 +7,7 @@ class Skills extends Component {
         return (
             <div className="col-md-12">
                 <div className="card">
-                    <div className="card-header text-center" >
+                    <div className="card-header text-center cardheader" >
                         skills
                     </div>
                     <div className="card-body">
@@ -15,7 +15,7 @@ class Skills extends Component {
                             (
                                 <ul >
                                     {this.props.skills.map((skill, index) => (
-                                        <li className="bg-light" key={`skill${index}`}>
+                                        <li key={`skill${index}`}>
                                             <h2>{skill}</h2>
                                         </li>
                                     ))}
@@ -34,7 +34,7 @@ class Skills extends Component {
                             />
                         </div>
 
-                        <button className="btn text-light btn-dark"
+                        <button className="btn buttoncolor lettercolor2"
                             disabled={!(this.props.skill)}
                             onClick={this.props.onClick}
                         >
