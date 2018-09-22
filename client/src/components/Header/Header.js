@@ -32,16 +32,16 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div className="bg-primary" >
+      <div className="headercolor" >
         <div className="position-absolute w-100 text-center text-light" style={{ zIndex: '9999', pointerEvents: 'none', marginTop: '10px' }}>
-          <h3>Handy Helper</h3>
+          <h3 className="lettercolor1">Handy Helper</h3>
         </div>
         <div className="container">
           <div className="row">
             <div className="col px-0">
-              <Navbar color="primary" light expand="md">
+              <Navbar className="headercolor" light expand="md">
                 <Link to={localStorage.getItem('id_token') ? '/home' : '/'} className="navbar-brand text-light font-weight-bold border rounded p-0" id="brand">
-                  <div className="btn btn-primary px-2 py-1">
+                  <div className="btn px-2 py-1 lettercolor1">
                     HH
                 </div>
                 </Link>
