@@ -9,7 +9,7 @@ const UserDataSchema = new Schema({
   email: String,
   photo: String,
   phone: Number,
-  skills: [{ id: Number, skill: String }],
+  skills: [],
   address:
   {
     address1: String,

@@ -25,7 +25,7 @@ class Home extends Component {
   // here is the function to retrieve user info from database using user email and set the data to the states 
   getUserInfo = (email) => {
 
-    API.getUserInfoFromDB(email)
+      API.getUserInfoFromDB(email)
       .then(res => this.setState({ skills: res.data.skills, id: res.data._id }))//here we retrive the data and set state each with its value 
       .catch(err => console.log(err));
 
@@ -43,20 +43,18 @@ class Home extends Component {
 
     let tempSkillArray = this.state.skills;
     tempSkillArray.push(this.state.skill);
-
     //   API.updateSkills(this.state.skills,this.state.id)
     //   .then(res => this.setState({skills:res.data.skills}))//here we retrive the data and set state each with its value 
     //  .catch(err => console.log(err));
     this.setState({ skills: tempSkillArray })
     console.log(this.state.skills)
-
     this.setState({ skill: "" })
   }
 
   state = {
     id: "",
     skill: "",
-    skills: ["test1", "test2"],
+    skills: ["test1"],
     email: "",
     phone: "",
     name: "",
