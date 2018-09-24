@@ -1,15 +1,22 @@
-import React from 'react';
-import { Input } from 'reactstrap';
-
-class ZipInput extends React.Component {
-  render() {
-    return (
-      <div className="col d-flex" style={{ maxWidth: '400px' }}>
-        <Input type="number" id="zip-code-input" placeholder="zip code" className="mr-2" onChange={this.props.handler} value={this.props.value} name={this.props.name} />
-        <button className="btn btn-primary" onClick={this.props.searchJobs}>Search</button>
+import React, { Component } from 'react';
+import { withGoogleMap, GoogleMap } from 'react-google-maps';
+class Map extends Component {
+   render() {
+   const GoogleMapExample = withGoogleMap(props => (
+      <GoogleMap
+        defaultCenter = { { lat: 33.647, lng: -117.840 } }
+        defaultZoom = { 13 }
+      >
+      </GoogleMap>
+   ));
+   return(
+      <div>
+        <GoogleMapExample
+          containerElement={ <div style={{ height: `500px`, width: '500px' }} /> }
+          mapElement={ <div style={{ height: `100%` }} /> }
+        />
       </div>
-    )
-  }
-}
-
-export default ZipInput;
+   );
+   }
+};
+export default Map;
