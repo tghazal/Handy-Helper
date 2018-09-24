@@ -20,5 +20,13 @@ export default {
         let data={skills:skills,id:id}
         console.log(data)
         return axios.post("/api/updateSkills/",data)
+    },
+ 
+    saveImage :function( files,id )
+
+    {
+        let data =({files:files,id:id})
+        return axios.post("/images",data)
     }
+   
 }

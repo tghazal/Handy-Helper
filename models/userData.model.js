@@ -9,7 +9,10 @@ const UserDataSchema = new Schema({
   email: String,
   photo: String,
   phone: Number,
-  skills: [{ id: Number, skill: String }],
+  skills: [],
+   image: 
+    { data: Buffer, contentType: String },
+
   address:
   {
     address1: String,
@@ -19,13 +22,13 @@ const UserDataSchema = new Schema({
     zip: Number
   }
   ,
-  jobs: [
+  myJobs: [
     {
       type: Schema.Types.ObjectId,
       ref: Job
     }
   ],
-  bids: [
+  myBids: [
     {
       type: Schema.Types.ObjectId,
       ref: Job

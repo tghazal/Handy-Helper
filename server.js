@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser');
 var jwt = require('express-jwt');
 const app = express();
 const PORT = process.env.PORT || 3001;
+const imagesRoutes=require("./routes/images.routes")
 
 const apiRoutes = require("./routes/api.routes")
 var authRoutes = require("./routes/auth.routes");
@@ -36,6 +37,7 @@ app.use(bodyParser.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+app.use("/images",imagesRoutes)
 app.use("/api",apiRoutes)
 //auth routes
 app.use("/auth", authRoutes);

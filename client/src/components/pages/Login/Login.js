@@ -48,19 +48,19 @@ class Login extends Component {
 
 
 
-                <div class="container py-5">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2 class="text-center text-black mb-4">Need Help?</h2>
-                            <div class="row">
-                                <div class="col-md-6 mx-auto">
+                <div className="container py-5">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <h2 className="text-center text-black mb-4">Need Help?</h2>
+                            <div className="row">
+                                <div className="col-md-6 mx-auto">
 
 
-                                    <div class="card rounded-0">
-                                        <div class="card-header">
-                                            <h3 class="mb-0">Login</h3>
+                                    <div className="card rounded-0">
+                                        <div className="card-header">
+                                            <h3 className="mb-0">Login</h3>
                                         </div>
-                                        <div class="card-body">
+                                        <div className="card-body">
                                             <input className="form-control"
                                                 value={this.state.topic}
                                                 onChange={this.handleInputChange}
@@ -68,7 +68,7 @@ class Login extends Component {
                                                 placeholder="Email"
                                             />
                                         </div>
-                                        <div class="card-body">
+                                        <div className="card-body">
                                             <input className="form-control"
                                                 value={this.state.topic}
                                                 onChange={this.handleInputChange}
