@@ -27,6 +27,10 @@ export default {
     {
         let data =({files:files,id:id})
         return axios.post("/images",data)
+    },
+    updateAddress :function(data)
+    {
+     return axios.post("/api/updateAdress",data)
     }
    
 }
