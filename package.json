@@ -30,7 +30,10 @@
     "if-env": "^1.0.4",
     "jsonwebtoken": "^8.3.0",
     "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.11",
     "mongoose": "^5.2.14",
-    "react-scripts": "^1.1.5"
+    "react-google-maps": "^9.4.5",
+    "react-scripts": "^1.1.5",
+    "recompose": "^0.30.0"
   }
 }
