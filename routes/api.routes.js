@@ -20,25 +20,25 @@ router.get('/jobs', (req, res) => {
       res.status(500).json(err);
       console.error(err);
     })
-})
+}),
+
+
+router.post("/updateAdress", function (req, res) {
+  console.log("in routes update address " + req.body.address1)
+  models.UserData.findOneAndUpdate({ _id: req.body.id }, { 'address.address1': req.body.address1,'address.address2':req.body.address2,'address.state':req.body.state,'address.city':req.body.city,'address.zip':req.body.zip})
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
+});
 
 
 router.post("/updateSkills", function (req, res) {
   console.log("in routes update skills " + req.body.skills)
   console.log("iddddd" + req.body.id)
-  // .findOneAndUpdate({ _id: req.params.id }, req.body)
   models.UserData.findOneAndUpdate({ _id: req.body.id }, { skills: req.body.skills })
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
-  //       updateSkills
 });
 
-// router.post("/api/photo",function(req,res){
-//   var newItem = new Item();
-//   newItem.img.data = fs.readFileSync(req.files.userPhoto.path)
-//   newItem.img.contentType = "image/png";
-// //  newItem.save();
-// console.log("hi")
-// });
+
 
 module.exports = router;

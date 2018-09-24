@@ -20,7 +20,7 @@ var storage = multer.diskStorage({
 
  router.post('/', function (req, res) {
      console.log(req.body.files)
-    //  models.UserData.findOneAndUpdate({ _id: req.body.id }, { image: req.body.image })
+    //  models.UserData.findOneAndUpdate({ _id: req.body.id }, { image: req.body.files })
     //  .then(dbModel => res.json(dbModel))
     //  .catch(err => console.err(err));
     upload(req, res, function (err) {
