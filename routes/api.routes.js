@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 var models = require("../models");
+var fs = require("fs");
+var multer = require('multer');
 
 
 router.get("/getUserInfo/:email", function (req, res) {
@@ -30,5 +32,13 @@ router.post("/updateSkills", function (req, res) {
     .catch(err => res.status(422).json(err));
   //       updateSkills
 });
+
+// router.post("/api/photo",function(req,res){
+//   var newItem = new Item();
+//   newItem.img.data = fs.readFileSync(req.files.userPhoto.path)
+//   newItem.img.contentType = "image/png";
+// //  newItem.save();
+// console.log("hi")
+// });
 
 module.exports = router;

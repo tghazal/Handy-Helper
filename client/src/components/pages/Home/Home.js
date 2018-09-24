@@ -5,6 +5,9 @@ import AuthService from '../../AuthService';
 import { Link } from 'react-router-dom';
 import Skills from "../../Skills"
 import API from "../../../utils/API";
+import Axios from "axios";
+import Dropzone from "react-dropzone"
+
 
 class Home extends Component {
 
@@ -26,7 +29,7 @@ class Home extends Component {
   getUserInfo = (email) => {
 
       API.getUserInfoFromDB(email)
-      .then(res => this.setState({ skills: res.data.skills, id: res.data._id }))//here we retrive the data and set state each with its value 
+      .then(res => this.setState({ skills: res.data.skills, id: res.data._id}))//here we retrive the data and set state each with its value 
       .catch(err => console.log(err));
 
   }
@@ -43,22 +46,40 @@ class Home extends Component {
 
     let tempSkillArray = this.state.skills;
     tempSkillArray.push(this.state.skill);
-    //   API.updateSkills(this.state.skills,this.state.id)
-    //   .then(res => this.setState({skills:res.data.skills}))//here we retrive the data and set state each with its value 
-    //  .catch(err => console.log(err));
-    this.setState({ skills: tempSkillArray })
+      API.updateSkills(tempSkillArray,this.state.id)
+      .then(res => this.getUserInfo(this.Auth.getProfile().email)) //this.setState({skills:res.data.skills}))//here we retrive the data and set state each with its value 
+     .catch(err => console.log(err));
+  //  this.setState({ skills: tempSkillArray })
     console.log(this.state.skills)
     this.setState({ skill: "" })
+  }
+
+  uploadImage(files)
+  {
+    console.log("upload")
+    console.log(files)
+    API.saveImage(files,this.state.id)
+   .then(res => console.log(res)) //this.setState({skills:res.data.skills}))//here we retrive the data and set state each with its value 
+  .catch(err => console.log(err));
+  }
+
+  saveImage = (files) => 
+  {
+  const selectedImage=files[0]
+  console.log(selectedImage)
+  this.uploadImage(files);
+  this.setState({image:URL.createObjectURL(selectedImage)})
+  
   }
 
   state = {
     id: "",
     skill: "",
-    skills: ["test1"],
+    skills: [],
     email: "",
     phone: "",
     name: "",
-    image: "",
+    image: null,
     address1: "",
     address2: "",
     city: "",
@@ -94,9 +115,11 @@ class Home extends Component {
             <div className="col-md-6   mt-2">
               <div className="row">
                 <div className="col-md-6 picture picturepadding">
-                  <img width="100%" src="https://cdn.tutsplus.com/net/uploads/legacy/958_placeholders/placehold.gif" className="img-responsive" alt="Cinque Terre" />
                   <div className="middle">
-                    <h1><ion-icon name="add-circle-outline"></ion-icon></h1>
+                   <h1><ion-icon name="add-circle-outline"></ion-icon></h1>
+                  </div>
+                  <div className="ml-4">
+                  <Dropzone  width="100%" onDrop={this.saveImage} ><img width="100%" height="100%" src={this.state.image} className="img-responsive"  /></Dropzone>
                   </div>
                 </div>
                 <p>{this.state.name}</p>

@@ -10,6 +10,9 @@ const UserDataSchema = new Schema({
   photo: String,
   phone: Number,
   skills: [],
+   image: 
+    { data: Buffer, contentType: String },
+
   address:
   {
     address1: String,
