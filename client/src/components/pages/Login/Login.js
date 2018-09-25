@@ -78,15 +78,15 @@ class Login extends Component {
                                             />
                                         </div>
 
-                                        <button className="btn text-light btn-primary"
+                                        <button className="btn text-light btn-danger"
                                             disabled={!(this.state.email && this.state.password)}
                                             onClick={this.login}
                                         >
                                             Log In
                                         </button>
                                         <h6>Don't hava an account?</h6>
-                                        <button className="btn text-light btn-primary" onClick={this.goToRegisterPage.bind(this)}>
-                                        Register Here
+                                        <button className="btn text-light btn-danger " onClick={this.goToRegisterPage.bind(this)}>
+                                            Register Here
                                     </button>
 
                                     </div>

@@ -77,7 +77,7 @@ class Register extends Component {
                                                     placeholder="Password"
                                                 />
                                             </div>
-                                            <button className="btn btn-primary" disabled={!(this.state.email && this.state.name && this.state.password)} onClick={this.register}>
+                                            <button className="btn btn-danger" disabled={!(this.state.email && this.state.name && this.state.password)} onClick={this.register}>
                                                 Register
                             </button>
                                         </div>
