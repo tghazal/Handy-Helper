@@ -6,10 +6,6 @@ a {
     text-decoration: none!important;
 }
 
-.buttoncolor {
-    background-color: #FF3B3F
-}
-
 .picture:hover .image {
     opacity: 0.3;
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import './SearchJobs.css';
-import { Form, FormGroup, Label } from 'reactstrap';
+import { Form, FormGroup, Label, Input } from 'reactstrap';
 import axios from 'axios';
-import ZipInput from './components/ZipInput';
+//import ZipInput from './components/ZipInput';
 
 class SearchJobs extends React.Component {
 
@@ -27,7 +27,7 @@ class SearchJobs extends React.Component {
 
   searchJobs(event) {
     event.preventDefault();
-    axios.get('/api/jobs', { params: { zipcode: this.state.zipcode } })
+    axios.get('/api/jobs/' + this.state.zipcode)
       .then(res => {
         console.log(res);
       })
@@ -45,10 +45,15 @@ class SearchJobs extends React.Component {
         <Form>
           <FormGroup>
             <div className="row justify-content-center">
-              <div className="col-auto m-0 pr-0 d-flex align-items-center">
+              <div className="col-auto d-flex align-items-center">
                 <Label for="zip-code-input" className="mb-0">Zip Code</Label>
               </div>
-              <ZipInput handler={this.handler.bind(this)} value={this.state.zipcode} name='zipcode' searchJobs={this.searchJobs.bind(this)} />
+              <div className="col pl-0" style={{ maxWidth: '400px' }}>
+                <Input className="form-input" id="zip-code-input" onChange={this.handler.bind(this)} value={this.state.zipcode} name='zipcode' />
+              </div>
+              <div className="col-auto p-0">
+                <button className="btn btn-primary" onClick={this.searchJobs.bind(this)} >Search</button>
+              </div>
             </div>
           </FormGroup>
         </Form>

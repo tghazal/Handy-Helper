@@ -1,3 +1,33 @@
+html {
+  height: 100%
+}
+
 body {
+  height: 100%;
   overflow-y: scroll;
+  box-shadow: none;
+}
+
+.btn-primary {
+  background-color: #FF3B3F;
+  border-color: rgb(100, 100, 100);
+  box-shadow: none;
+}
+
+.btn-primary:hover {
+  background-color: #cc2f32;
+  border-color: black;
+  box-shadow: none;
+}
+
+.btn-primary:focus {
+  background-color: #cc2f32;
+  border-color: black;
+  box-shadow: none;
+}
+
+.btn-primary:active {
+  background-color: #cc2f32!important;
+  border-color: black!important;
+  box-shadow: none!important;
 }

@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="h-100 d-flex flex-column">
           <Header />
           <Route path="/main" component={Main} />
           <Route exact path="/" component={Welcome} />

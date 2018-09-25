@@ -1,48 +1,31 @@
-.jumbotron
-{
-    background-image: url("./helpImage11.jpg");
-    height:650px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin-bottom: 0px;
-  };
-
-
-  .main-text
-{
+.main-text {
     position: absolute;
     top: 50px;
     width: 96.66666666666666%;
     color: #FFF;
 }
-.btn-min-block
-{
+
+.btn-min-block {
     min-width: 170px;
     line-height: 26px;
 }
-.btn-clear
-{
-    color: rgb(196, 18, 18);
+
+.btn-clear {
+    color: black;
     background-color: transparent;
-    border-color: rgb(196, 18, 18);
+    border-color: black;
     margin-right: 15px;
 }
-.btn-clear:hover
-{
+
+.btn-clear:hover {
     color: #FFF;
-    background-color: rgb(196, 18, 18);
-};
+    background-color: #FF3B3F;
+    border-color: white;
+}
 
-
-
-
-
-
-
-
-
-  
-
-
-
- 
+.col-style {
+    background-image: url('./helpImage11.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
