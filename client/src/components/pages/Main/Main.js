@@ -22,11 +22,19 @@ class Main extends Component {
     phone: "",
     name: "",
     image: null,
-    address: null,
+    addrees1: "",
+    address2:"",
+    city:"",
+    state:"",
+    zip:"",
     myJobs: [],
     myBids: [],
     history: [],
+    addressFlag:0
   }
+
+
+ 
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -38,17 +46,23 @@ class Main extends Component {
   getUserInfo = (email) => {
     API.getUserInfoFromDB(email)
       .then(res => {
+        console.log(res.data.address.address1)
         this.setState({
           skills: res.data.skills,
           id: res.data._id,
-          address: res.data.address,
-          myJobs: res.data.myJobs
+          myJobs: res.data.myJobs,
+          addrees1:res.data.address.address1,
+          address2:res.data.address.address2,
+          state:res.data.address.state,
+          city:res.data.address.city,
+          zip:res.data.address.zip
         })
       })
       .catch(err => console.log(err));
   }
 
   componentDidMount = () => {
+  
     //call the function to retrive user info 
     this.getUserInfo(this.Auth.getProfile().email);
     //get user email and name from the token through getProfile function
@@ -59,13 +73,13 @@ class Main extends Component {
 
   }
 
-  setImage = (email) => {
-    console.log("setimageeeeeeeeee")
-    // API.getUserInfoFromDB(email)
-    // .then(res => console.log(res.data))//here we retrive the data and set state each with its value 
-    // .catch(err => console.log(err));
+
+ viewAddress=() =>{
+
+    this.setState({addressFlag:1})
   }
 
+  
   addSkill = () => {
     let tempSkillArray = this.state.skills;
     tempSkillArray.push(this.state.skill);
@@ -76,31 +90,32 @@ class Main extends Component {
     this.setState({ skill: "" })
   }
 
-  uploadImage(files) {
-    console.log("upload")
-    console.log(files)
-    API.saveImage(files, this.state.id)
-      .then(res => this.setImage(this.Auth.getProfile().email))
-      .catch(err => console.log(err));
-  }
+
 
   saveImage = (files) => {
     const selectedImage = files[0]
     console.log(selectedImage)
-    this.uploadImage(files[0]);
     this.setState({ image: URL.createObjectURL(selectedImage) })
-
+    var formData = new FormData();
+    formData.append('image', files);
+    console.log("form data",formData)
+    API.saveImage(formData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
   }
 
   editAddress = () => {
+    
     let data = {
       address1: this.state.address1,
-      address2: this.state.ddress2,
+      address2: this.state.address2,
       state: this.state.state,
       city: this.state.city,
       zip: this.state.zip,
       id: this.state.id
     }
+    this.setState({addressFlag:0})
+    console.log(data)
     API.updateAddress(data)
       .then(res => this.getUserInfo(this.Auth.getProfile().email))
       .catch(err => console.log(err));
@@ -109,7 +124,7 @@ class Main extends Component {
   render() {
     return (
       <div>
-        <Route exact path="/main/home" render={(props) => <Home mainState={this.state} onChange={this.handleInputChange} onClick={this.addSkill} />} />
+        <Route exact path="/main/home" render={(props) => <Home mainState={this.state} onChange={this.handleInputChange} onClick={this.addSkill} onAddressClick={this.editAddress} onView={this.viewAddress} onDrop={this.saveImage} />} />
         <Route exact path="/main/search-jobs" render={(props) => <SearchJobs mainState={this.state} />} />
         <Route exact path="/main/post-job" render={(props) => <PostJob mainState={this.state} />} />
         <Modal isOpen={this.state.toggle} toggle={this.toggle} centered>

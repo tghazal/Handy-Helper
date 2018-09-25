@@ -29,8 +29,8 @@ class Address extends Component {
                                 placeholder={"city"}
                                 onChange={this.props.onChange}
                             />
-                            <input
-                                name={"state"} className="form-control"
+                            <input className="form-control"
+                                name={"state"} 
                                 value={this.props.state}
                                 placeholder={"state"}
                                 onChange={this.props.onChange}
