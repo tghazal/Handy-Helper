@@ -18,7 +18,7 @@ class Login extends Component {
 
     componentWillMount() {
         if (this.Auth.loggedIn())
-            this.props.history.replace('/app/home');
+            this.props.history.replace('/main/home');
     }
     // Handles updating component state when the user types into the input field
     handleInputChange = event => {
@@ -31,7 +31,7 @@ class Login extends Component {
     login = () => {
         this.Auth.login(this.state.email, this.state.password)
             .then(res => {
-                this.props.history.replace('/home');
+                this.props.history.replace('/main/home');
             })
             .catch(err => {
                 alert(err);
@@ -76,15 +76,14 @@ class Login extends Component {
                                                 placeholder="Password"
                                             />
                                         </div>
-
-                                        <button className="btn text-light btn-primary"
+                                        <button className="btn text-light btn-primary m-3"
                                             disabled={!(this.state.email && this.state.password)}
                                             onClick={this.login}
                                         >
                                             Log In
                                         </button>
-                                        <h6>Don't have an account?</h6>
-                                        <button className="btn text-light btn-primary" onClick={this.goToRegisterPage.bind(this)}>
+                                        <h6 className="mx-3 mb-0">Don't have an account?</h6>
+                                        <button className="btn text-light btn-primary mx-3 mt-1 mb-3" onClick={this.goToRegisterPage.bind(this)}>
                                             Register Here
                                     </button>
 

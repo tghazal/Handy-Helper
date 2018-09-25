@@ -2,8 +2,6 @@ import React from 'react';
 import './SearchJobs.css';
 import { Form, FormGroup, Label } from 'reactstrap';
 import axios from 'axios';
-
-//components
 import ZipInput from './components/ZipInput';
 
 class SearchJobs extends React.Component {
@@ -27,9 +25,9 @@ class SearchJobs extends React.Component {
     })
   };
 
-  searchJobs(e) {
-    e.preventDefault();
-    axios.get('./api/jobs', { params: { zipcode: this.state.zipcode } })
+  searchJobs(event) {
+    event.preventDefault();
+    axios.get('/api/jobs', { params: { zipcode: this.state.zipcode } })
       .then(res => {
         console.log(res);
       })

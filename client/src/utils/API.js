@@ -10,27 +10,21 @@ export default {
     },
     //this function should use axios to call url from server to get the data from database 
     getUserInfoFromDB: function (email) {
-        console.log("in API email is "+email)
-        return axios.get("/api/getUserInfo/"+email)
+        return axios.get("/api/getUserInfo/" + email)
 
     },
-    updateSkills :function( skills, id )
-
-    {
-        let data={skills:skills,id:id}
+    updateSkills: function (skills, id) {
+        let data = { skills: skills, id: id }
         console.log(data)
-        return axios.post("/api/updateSkills/",data)
+        return axios.post("/api/updateSkills/", data)
     },
- 
-    saveImage :function( files,id )
 
-    {
-        let data =({files:files,id:id})
-        return axios.post("/images",data)
+    saveImage: function (files, id) {
+        let data = ({ files: files, id: id })
+        return axios.post("/images", data)
     },
-    updateAddress :function(data)
-    {
-     return axios.post("/api/updateAdress",data)
+    updateAddress: function (data) {
+        return axios.post("/api/updateAdress", data)
     }
-   
+
 }

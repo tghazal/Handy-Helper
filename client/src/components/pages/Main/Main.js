@@ -5,13 +5,27 @@ import API from "../../../utils/API";
 import { Route } from 'react-router-dom';
 import PostJob from './pages/PostJob/PostJob';
 import SearchJobs from './pages/SearchJobs/SearchJobs';
-import Home from './pages/Home/Home'
+import Home from './pages/Home/Home';
+import { Modal } from 'reactstrap';
 
 class Main extends Component {
-
   constructor() {
     super();
     this.Auth = new AuthService();
+  }
+
+  state = {
+    id: "",
+    skill: "",
+    skills: [],
+    email: "",
+    phone: "",
+    name: "",
+    image: null,
+    address: null,
+    myJobs: [],
+    myBids: [],
+    history: [],
   }
 
   handleInputChange = event => {
@@ -21,31 +35,28 @@ class Main extends Component {
     });
   };
 
-  // here is the function to retrieve user info from database using user email and set the data to the states 
   getUserInfo = (email) => {
-
     API.getUserInfoFromDB(email)
-      .then(
-        res => this.setState(//here we retrive the data and set state each with its value 
-          {
-            skills: res.data.skills,
-            id: res.data._id,
-            address1: res.data.address.address1,
-            address2: res.data.address.address2,
-            state: res.data.address.state,
-            city: res.data.address.city,
-            zip: res.data.address.zip
-          }
-        ))
+      .then(res => {
+        this.setState({
+          skills: res.data.skills,
+          id: res.data._id,
+          address: res.data.address,
+          myJobs: res.data.myJobs
+        })
+      })
       .catch(err => console.log(err));
-
   }
 
   componentDidMount = () => {
     //call the function to retrive user info 
     this.getUserInfo(this.Auth.getProfile().email);
     //get user email and name from the token through getProfile function
-    this.setState({ name: this.Auth.getProfile().name, email: this.Auth.getProfile().email })
+    this.setState({
+      name: this.Auth.getProfile().name,
+      email: this.Auth.getProfile().email
+    });
+
   }
 
   setImage = (email) => {
@@ -53,11 +64,9 @@ class Main extends Component {
     // API.getUserInfoFromDB(email)
     // .then(res => console.log(res.data))//here we retrive the data and set state each with its value 
     // .catch(err => console.log(err));
-
   }
+
   addSkill = () => {
-
-
     let tempSkillArray = this.state.skills;
     tempSkillArray.push(this.state.skill);
     API.updateSkills(tempSkillArray, this.state.id)
@@ -93,38 +102,23 @@ class Main extends Component {
       id: this.state.id
     }
     API.updateAddress(data)
-      .then(res => this.getUserInfo(this.Auth.getProfile().email)) //this.setState({skills:res.data.skills}))//here we retrive the data and set state each with its value 
+      .then(res => this.getUserInfo(this.Auth.getProfile().email))
       .catch(err => console.log(err));
-
   }
 
-  state = {
-    id: "",
-    skill: "",
-    skills: [],
-    email: "",
-    phone: "",
-    name: "",
-    image: null,
-    address1: "",
-    address2: "",
-    city: "",
-    state: "",
-    zip: "",
-    jobs: [],
-    bids: [],
-    historyJobs: []
-
-  }
   render() {
     return (
       <div>
         <Route exact path="/main/home" render={(props) => <Home mainState={this.state} onChange={this.handleInputChange} onClick={this.addSkill} />} />
-        <Route exact path="/main/search-jobs" render={(props) => <SearchJobs {...props} />} />
-        <Route exact path="/main/post-job" render={(props) => <PostJob {...props} />} />
+        <Route exact path="/main/search-jobs" render={(props) => <SearchJobs mainState={this.state} />} />
+        <Route exact path="/main/post-job" render={(props) => <PostJob mainState={this.state} />} />
+        <Modal isOpen={this.state.toggle} toggle={this.toggle} centered>
+          <h1>Job Created!!!</h1>
+        </Modal>
       </div>
     );
   }
 }
+
 export default withAuth(Main);
 
