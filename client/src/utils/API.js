@@ -19,9 +19,10 @@ export default {
         return axios.post("/api/updateSkills/", data)
     },
 
-    saveImage: function (files, id) {
-        let data = ({ files: files, id: id })
-        return axios.post("/images", data)
+    saveImage: function (image) {
+        let file={file:image}
+      console.log(file)
+        return axios.post("/images", file)
     },
     updateAddress: function (data) {
         return axios.post("/api/updateAdress", data)
