@@ -15,8 +15,9 @@ router.get("/getUserInfo/:email", function (req, res) {
 });
 
 //get jobs by zipcode
-router.get('/jobs', (req, res) => {
-  models.Job.find({ 'address.from': req.body.zipcode })
+router.get('/jobs/:zipcode', (req, res) => {
+  console.log(req.params);
+  models.Job.find({ 'address.from': req.params.zipcode })
     .then(jobs => res.json(jobs))
     .catch(err => {
       res.status(500).json(err);

@@ -1,9 +1,11 @@
 .buttoncolor {
     background-color: #FF3B3F
-  }
+}
+
 .lettercolor2 {
     color: white;
-  }
-  .cardheader {
-      background-color: #CAEBF2;
-  }
+}
+
+.card-header {
+    background-color: #CAEBF2;
+}
