@@ -1,22 +1,18 @@
 import React, { Component } from "react";
 import withAuth from '../../withAuth';
-import "./Home.css"
 import AuthService from '../../AuthService';
-import { Link } from 'react-router-dom';
-import Skills from "../../Skills"
 import API from "../../../utils/API";
-import Dropzone from "react-dropzone"
-import Address from "../../Address"
+import { Route } from 'react-router-dom';
+import PostJob from './pages/PostJob/PostJob';
+import SearchJobs from './pages/SearchJobs/SearchJobs';
+import Home from './pages/Home/Home'
 
-
-class Home extends Component {
+class Main extends Component {
 
   constructor() {
     super();
     this.Auth = new AuthService();
   }
-
-
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -123,67 +119,12 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <div className="container">
-          <div className="row">
-            <div className="col">
-
-              <p className="App-intro">
-              </p>
-            </div>
-
-            <div className="col d-flex align-items-center justify-content-center">
-              <Link to="/post-job"><button className="btn btn-primary btn-block">Post Jobs</button></Link>
-            </div>
-            <div className="col d-flex align-items-center justify-content-center">
-              <Link to="/search-jobs"><button className="btn btn-block lettercolor2 buttoncolor">Search Jobs</button></Link>
-            </div>
-          </div>
-        </div>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6   mt-2">
-              <div className="row">
-                <div className="col-md-6 picture picturepadding">
-                  <div className="middle">
-                    <h1><ion-icon name="add-circle-outline"></ion-icon></h1>
-                  </div>
-                  <div className="ml-4">
-                    <Dropzone width="100%" onDrop={this.saveImage} ><img width="100%" height="100%" src={this.state.image} className="img-responsive" /></Dropzone>
-                  </div>
-                </div>
-                <div className="col-md-12"> <h2>Name: {this.state.name} </h2></div>
-
-                <div className="col-md-12"> <h2>Email: {this.state.email}</h2></div>
-                <div className="col-md-12"><h2>Address:{this.state.address1} {this.state.address2} {this.state.state} {this.state.city} {this.state.zip}</h2></div>
-                <Address address1={this.state.address1} address2={this.state.address2} city={this.state.city} state={this.state.city} zip={this.state.zip} onChange={this.handleInputChange} onClick={this.editAddress} />
-
-                 <Skills skills={this.state.skills} skill={this.state.skill} onChange={this.handleInputChange} onClick={this.addSkill} />
-              </div>
-             </div>
-          <div className="col-md-6 mx-auto   mt-2">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="card-header tet-center" >
-                  My Jobs
-          </div>
-              </div>
-              <div className="col-md-12">
-                <div className="card-header tet-center" >
-                  My bids
-          </div>
-              </div>
-              <div className="col-md-12">
-                <div className="card-header tet-center" >
-                  historyJobs
-          </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div >
-      </div >
+        <Route exact path="/main/home" render={(props) => <Home mainState={this.state} onChange={this.handleInputChange} onClick={this.addSkill} />} />
+        <Route exact path="/main/search-jobs" render={(props) => <SearchJobs {...props} />} />
+        <Route exact path="/main/post-job" render={(props) => <PostJob {...props} />} />
+      </div>
     );
   }
 }
-export default withAuth(Home);
+export default withAuth(Main);
 
