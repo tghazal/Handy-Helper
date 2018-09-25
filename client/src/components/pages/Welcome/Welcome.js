@@ -1,19 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Welcome.css";
-import { Jumbotron, Button } from 'reactstrap';
+import { Jumbotron } from 'reactstrap';
 
 const Welcome = (props) => {
   return (
     <div className="container-fluid " >
-
-
-
-
       <Jumbotron>
         <div className="main-text hidden-xs" id="jumbo">
           <div className="col-md-12 text-center transbox">
             <br /><br />
-            <h1 className="title font-weight-bold" style={{ "color": "rgb(196, 18, 18)", "font-size":"100px" }}><strong>Need Help?</strong></h1>
+            <h1 className="title font-weight-bold" style={{ "color": "rgb(196, 18, 18)", "font-size": "100px" }}><strong>Need Help?</strong></h1>
             <br /><br /><br />
 
             <p className="lead">
@@ -23,10 +19,9 @@ const Welcome = (props) => {
           </div>
         </div>
       </Jumbotron>
-
-              <div class="footer-copyright text-center ">© 2018 Copyright:
+      <div class="footer-copyright text-center ">© 2018 Copyright:
       <a href="/"> Handy Helper</a>
-        </div>
+      </div>
 
 
 

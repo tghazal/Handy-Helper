@@ -33,14 +33,14 @@ class Header extends React.Component {
   render() {
     return (
       <div className="headercolor" >
-        <div className="position-absolute w-100 text-center text-light" style={{ zIndex: '9999', pointerEvents: 'none', marginTop: '10px' }}>
+        <div className="position-absolute w-100 text-center text-light" style={{ zIndex: '9999', pointerEvents: 'none', marginTop: '10px' }} id="hh-title">
           <h3 className="lettercolor1">Handy Helper</h3>
         </div>
         <div className="container">
           <div className="row">
             <div className="col px-0">
               <Navbar className="headercolor" light expand="md">
-                <Link to={localStorage.getItem('id_token') ? '/home' : '/'} className="navbar-brand text-light font-weight-bold border rounded p-0" id="brand">
+                <Link to={localStorage.getItem('id_token') ? '/main/home' : '/'} className="navbar-brand text-light font-weight-bold border rounded p-0" id="brand">
                   <div className="btn px-2 py-1 lettercolor1">
                     HH
                 </div>

@@ -18,7 +18,7 @@ class Login extends Component {
 
     componentWillMount() {
         if (this.Auth.loggedIn())
-            this.props.history.replace('/home');
+            this.props.history.replace('/app/home');
     }
     // Handles updating component state when the user types into the input field
     handleInputChange = event => {
@@ -85,7 +85,7 @@ class Login extends Component {
                                         </button>
                                         <h6>Don't have an account?</h6>
                                         <button className="btn text-light btn-primary" onClick={this.goToRegisterPage.bind(this)}>
-                                        Register Here
+                                            Register Here
                                     </button>
 
                                     </div>

@@ -13,6 +13,7 @@ router.get("/getUserInfo/:email", function (req, res) {
 });
 
 
+//get route to find jobs
 router.get('/jobs', (req, res) => {
   models.Job.find({ 'address.from': req.body.zipcode })
     .then(jobs => res.json(jobs))
@@ -22,10 +23,19 @@ router.get('/jobs', (req, res) => {
     })
 }),
 
+  //post route to post a job
+  router.get('./jobs', (req, res) => {
+    models.Job.create(req.body)
+      .then(job => res.json(job))
+      .cathc(err => {
+        res.status(500).json(err);
+        console.error(err);
+      })
+  })
 
 router.post("/updateAdress", function (req, res) {
   console.log("in routes update address " + req.body.address1)
-  models.UserData.findOneAndUpdate({ _id: req.body.id }, { 'address.address1': req.body.address1,'address.address2':req.body.address2,'address.state':req.body.state,'address.city':req.body.city,'address.zip':req.body.zip})
+  models.UserData.findOneAndUpdate({ _id: req.body.id }, { 'address.address1': req.body.address1, 'address.address2': req.body.address2, 'address.state': req.body.state, 'address.city': req.body.city, 'address.zip': req.body.zip })
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
 });
