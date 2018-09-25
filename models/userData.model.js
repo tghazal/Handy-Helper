@@ -10,8 +10,8 @@ const UserDataSchema = new Schema({
   photo: String,
   phone: Number,
   skills: [],
-   image: String,
-   
+  image: String,
+
 
   address:
   {
@@ -25,19 +25,19 @@ const UserDataSchema = new Schema({
   myJobs: [
     {
       type: Schema.Types.ObjectId,
-      ref: Job
+      ref: 'Job'
     }
   ],
   myBids: [
     {
       type: Schema.Types.ObjectId,
-      ref: Job
+      ref: 'Job'
     }
   ],
   history: [
     {
       type: Schema.Types.ObjectId,
-      ref: Job,
+      ref: 'Job',
       self: Boolean
     }
   ]

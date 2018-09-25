@@ -6,7 +6,7 @@ const User = require('./userData.model');
 const jobSchema = new Schema({
   owner: {
     type: Schema.Types.ObjectId,
-    ref: User
+    ref: 'User'
   },
   title: String,
   description: String,
@@ -21,7 +21,7 @@ const jobSchema = new Schema({
   bids: [
     {
       type: Schema.Types.ObjectId,
-      ref: User,
+      ref: 'User',
       price: Number,
       status: {
         type: String,
