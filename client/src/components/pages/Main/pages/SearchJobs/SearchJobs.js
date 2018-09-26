@@ -5,9 +5,12 @@ import axios from 'axios';
 import Map from './components/Map';
 
 class SearchJobs extends React.Component {
-
-  state = {
-    zipcode: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      center: { lat: 33.647, lng: -117.840 },
+      zipcode: ''
+    }
   }
 
   componentDidUpdate() {
@@ -27,11 +30,27 @@ class SearchJobs extends React.Component {
 
   searchJobs(event) {
     event.preventDefault();
-    axios.get('/api/jobs/' + this.state.zipcode)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => console.error(err));
+    const location = this.state.zipcode;
+    axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
+        params: {
+            address:location,
+            key:"AIzaSyBrdQ7WyPmfHVWrHsubIfm6Wgc8RiBgsRY"
+
+        }
+    })
+    .then(resp => {
+      console.log("request made")
+      console.log(resp)
+      this.setState({center: resp.data.results[0].geometry.location})
+    })
+    .catch(err => {
+      console.error(err);
+    })
+    // axios.get('/api/jobs/' + this.state.zipcode)
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => console.error(err));
   }
 
   render() {
@@ -57,7 +76,7 @@ class SearchJobs extends React.Component {
             </div>
           </FormGroup>
         </Form>
-        <Map>
+        <Map center = {this.state.center}>
 
         </Map>
       </div>
