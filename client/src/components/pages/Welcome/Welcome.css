@@ -1,12 +1,35 @@
-.jumbotron
+/* .jumbotron
 {
     background-image: url("./helpImage11.jpg");
     height:650px;
     background-repeat: no-repeat;
     background-size: cover;
     margin-bottom: 0px;
-  };
+  }; */
+  .jumbotron-billboard .img {
+    margin-bottom: 0px;
+    opacity: 0.5;
+    color: #fff;
+    background-image: url("./helpImage11.jpg");
+    width: 100%;
+    height: 650px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1;
+}
 
+.jumbotron {
+  position:relative;
+
+}
+.jumbotron .container {
+  position:relative;
+  z-index:1;
+}
 
   .main-text
 {
