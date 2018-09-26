@@ -1,1 +1,1 @@
-export {default} from "./ZipInput"
+export {default} from "./Map";

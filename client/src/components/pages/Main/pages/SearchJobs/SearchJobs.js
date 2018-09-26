@@ -2,7 +2,7 @@ import React from 'react';
 import './SearchJobs.css';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import axios from 'axios';
-//import ZipInput from './components/ZipInput';
+import Map from './components/Map';
 
 class SearchJobs extends React.Component {
 
@@ -57,6 +57,9 @@ class SearchJobs extends React.Component {
             </div>
           </FormGroup>
         </Form>
+        <Map>
+          
+        </Map>
       </div>
     )
   }
