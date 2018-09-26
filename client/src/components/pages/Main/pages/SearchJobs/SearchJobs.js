@@ -46,10 +46,10 @@ class SearchJobs extends React.Component {
           <FormGroup>
             <div className="row justify-content-center">
               <div className="col-auto d-flex align-items-center">
-                <Label for="zip-code-input" className="mb-0">Zip Code</Label>
+                <Label for="zip-code-input" className="mb-0"></Label>
               </div>
               <div className="col pl-0" style={{ maxWidth: '400px' }}>
-                <Input className="form-input" id="zip-code-input" onChange={this.handler.bind(this)} value={this.state.zipcode} name='zipcode' />
+                <Input className="form-input" id="zip-code-input" placeholder="Zip Code" onChange={this.handler.bind(this)} value={this.state.zipcode} name='zipcode' />
               </div>
               <div className="col-auto p-0">
                 <button className="btn btn-primary" onClick={this.searchJobs.bind(this)} >Search</button>
@@ -58,7 +58,7 @@ class SearchJobs extends React.Component {
           </FormGroup>
         </Form>
         <Map>
-          
+
         </Map>
       </div>
     )
