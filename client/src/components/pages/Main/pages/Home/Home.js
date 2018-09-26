@@ -57,7 +57,7 @@ export default class Home extends React.Component {
                 <div className="row">
                   <div className="col">
                     <h2>Address:
-                  {this.props.mainState.addrees1}
+                      {this.props.mainState.addrees1}
                       {this.props.mainState.addrees2}
                       {this.props.mainState.state}
                       {this.props.mainState.city}

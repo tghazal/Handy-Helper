@@ -70,12 +70,10 @@ class Main extends Component {
       name: this.Auth.getProfile().name,
       email: this.Auth.getProfile().email
     });
-
   }
 
 
   viewAddress = () => {
-
     this.setState({ addressFlag: 1 })
   }
 
@@ -106,8 +104,8 @@ class Main extends Component {
     reader.readAsDataURL(files[0]);
   }
 
-  editAddress = () => {
-
+  editAddress = (event) => {
+    event.preventDefault();
     let data = {
       address1: this.state.address1,
       address2: this.state.address2,

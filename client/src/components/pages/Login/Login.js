@@ -54,8 +54,6 @@ class Login extends Component {
                             <h2 className="text-center text-black mb-4">Need Help?</h2>
                             <div className="row">
                                 <div className="col-md-6 mx-auto">
-
-
                                     <div className="card rounded-0">
                                         <div className="card-header">
                                             <h3 className="mb-0">Login</h3>
@@ -76,7 +74,7 @@ class Login extends Component {
                                                 placeholder="Password"
                                             />
                                         </div>
-                                        <button className="btn text-light btn-primary m-3"
+                                        <button className="btn btn-primary m-3"
                                             disabled={!(this.state.email && this.state.password)}
                                             onClick={this.login}
                                         >

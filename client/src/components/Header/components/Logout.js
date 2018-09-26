@@ -7,7 +7,7 @@ class Logout extends React.Component {
     return (
       <NavItem style={{ cursor: 'pointer' }}>
         <Link to="/login" className="nav-link p-0" onClick={this.props.onClick}>
-          <div className="btn border rounded lettercolor1">
+          <div className="btn btn-secondary">
             Logout
           </div>
         </Link>

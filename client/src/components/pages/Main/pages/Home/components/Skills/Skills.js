@@ -28,7 +28,7 @@ class Skills extends Component {
                             <div className="form-group">
                                 <input className="form-control" value={this.props.skill} onChange={this.props.onChange} name="skill" placeholder="skill" />
                             </div>
-                            <button className="btn buttoncolor lettercolor2" disabled={!(this.props.skill)} onClick={this.props.onClick}>
+                            <button className="btn btn-primary" disabled={!(this.props.skill)} onClick={this.props.onClick}>
                                 Add Skill
                             </button>
                         </div>
