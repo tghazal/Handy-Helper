@@ -67,6 +67,14 @@ router.post("/updateSkills", function (req, res) {
     .catch(err => res.status(422).json(err));
 });
 
+router.post("/saveimage", function (req, res) {
+  console.log("in routes update image " + req.body.file)
+ 
+  models.UserData.findOneAndUpdate({ email: req.body.email }, { image: req.body.file})
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
+});
+
 
 
 module.exports = router;

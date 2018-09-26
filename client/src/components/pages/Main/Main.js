@@ -42,8 +42,11 @@ class Main extends Component {
   getUserInfo = (email) => {
     API.getUserInfoFromDB(email)
       .then(res => {
+        console.log(res)
         const data = res.data;
         const address = data.address;
+        var b64string = data.image;
+        var buf = Buffer.from(b64string, 'base64');
         this.setState({
           skills: data.skills,
           id: data._id,
@@ -52,7 +55,8 @@ class Main extends Component {
           address2: address ? address.address2 : null,
           state: address ? address.state : null,
           city: address ? address.city : null,
-          zip: address ? address.zip : null
+          zip: address ? address.zip : null,
+           image:buf
         })
       })
       .catch(err => console.log(err));
@@ -89,15 +93,17 @@ class Main extends Component {
 
 
   saveImage = (files) => {
-    const selectedImage = files[0]
-    console.log(selectedImage)
-    this.setState({ image: URL.createObjectURL(selectedImage) })
-    var formData = new FormData();
-    formData.append('image', files);
-    console.log("form data", formData)
-    API.saveImage(formData)
-      .then(res => console.log(res))
+    console.log("files", files)
+    const reader = new FileReader();
+    reader.onload = () => {
+      const dataURL = reader.result;
+      console.log(dataURL);
+      this.setState({image: dataURL})
+      API.saveImage(dataURL,this.Auth.getProfile().email)
+      .then(res =>console.log(res))
       .catch(err => console.log(err));
+    };
+    reader.readAsDataURL(files[0]);
   }
 
   editAddress = () => {
