@@ -7,7 +7,7 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <div className="footer-copyright text-center">
+      <div className="footer-copyright text-center ">
         <div style={{
           height: '1px',
           background: '#FF3B3F'

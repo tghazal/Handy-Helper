@@ -14,6 +14,10 @@ a {
     opacity: 1;
 }
 
+.lettercolor1 {
+    color: #A9A9A9;
+  }
+  
 .middle {
     transition: .5s ease;
     opacity: 0;

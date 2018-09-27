@@ -74,7 +74,8 @@ class Main extends Component {
   }
 
 
-  viewAddress = () => {
+  viewAddress = (e) => {
+e.preventDefault();
     this.setState({ addressFlag: 1 })
   }
 
