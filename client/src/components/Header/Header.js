@@ -3,7 +3,7 @@ import './Header.css';
 import { Navbar, Nav } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import AuthService from '../AuthService';
-import icon from '../../icon.png';
+import icon from '../../images/icon.png';
 
 //components
 import { Login, Logout } from './components';
@@ -35,7 +35,7 @@ class Header extends React.Component {
     return (
       <div className="headercolor" >
         <div className="position-absolute w-100 text-center" style={{ zIndex: '9999', pointerEvents: 'none', marginTop: '10px' }} id="hh-title">
-          <h3 className="lettercolor1">Handy Helper</h3>
+          <h3 className="lettercolor1 mb-0" id="title">Handy Helper</h3>
         </div>
         <div className="container">
           <div className="row">
