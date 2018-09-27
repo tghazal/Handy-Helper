@@ -75,6 +75,7 @@ class Register extends Component {
                                                     onChange={this.handleInputChange}
                                                     name="password"
                                                     placeholder="Password"
+                                                    type="password"
                                                 />
                                             </div>
                                             <button className="btn btn-primary" disabled={!(this.state.email && this.state.name && this.state.password)} onClick={this.register}>
