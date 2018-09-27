@@ -79,7 +79,7 @@ class Login extends Component {
                                             />
                                         </div>
                                         <button className="btn text-light btn-primary m-3"
-                                            disabled={!(this.state.email && this.state.password)}
+                                            
                                             onClick={this.login}
                                         >
                                             Log In
