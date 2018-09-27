@@ -52,6 +52,10 @@ class Header extends React.Component {
             </div>
           </div>
         </div>
+        <div style={{
+          height: '1px',
+          background: '#FF3B3F'
+        }} />
       </div>
     );
   }

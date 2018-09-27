@@ -42,11 +42,12 @@ class Main extends Component {
   getUserInfo = (email) => {
     API.getUserInfoFromDB(email)
       .then(res => {
-        console.log(res)
         const data = res.data;
         const address = data.address;
-        var b64string = data.image;
-        var buf = Buffer.from(b64string, 'base64');
+        if (data.image) {
+          var b64string = data.image;
+          var buf = Buffer.from(b64string, 'base64');
+        }
         this.setState({
           skills: data.skills,
           id: data._id,
@@ -56,7 +57,7 @@ class Main extends Component {
           state: address ? address.state : null,
           city: address ? address.city : null,
           zip: address ? address.zip : null,
-           image:buf
+          image: buf ? buf : null
         })
       })
       .catch(err => console.log(err));
@@ -84,22 +85,19 @@ class Main extends Component {
     API.updateSkills(tempSkillArray, this.state.id)
       .then(res => this.getUserInfo(this.Auth.getProfile().email)) //this.setState({skills:res.data.skills}))//here we retrive the data and set state each with its value 
       .catch(err => console.log(err));
-    console.log(this.state.skills)
     this.setState({ skill: "" })
   }
 
 
 
   saveImage = (files) => {
-    console.log("files", files)
     const reader = new FileReader();
     reader.onload = () => {
       const dataURL = reader.result;
-      console.log(dataURL);
-      this.setState({image: dataURL})
-      API.saveImage(dataURL,this.Auth.getProfile().email)
-      .then(res =>console.log(res))
-      .catch(err => console.log(err));
+      this.setState({ image: dataURL })
+      API.saveImage(dataURL, this.Auth.getProfile().email)
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
     };
     reader.readAsDataURL(files[0]);
   }
@@ -115,7 +113,6 @@ class Main extends Component {
       id: this.state.id
     }
     this.setState({ addressFlag: 0 })
-    console.log(data)
     API.updateAddress(data)
       .then(res => this.getUserInfo(this.Auth.getProfile().email))
       .catch(err => console.log(err));
