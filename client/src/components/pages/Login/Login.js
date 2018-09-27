@@ -45,9 +45,6 @@ class Login extends Component {
     render() {
         return (
             <div className="container">
-
-
-
                 <div className="container py-5">
                     <div className="row">
                         <div className="col-md-12">
@@ -84,79 +81,12 @@ class Login extends Component {
                                         <button className="btn text-light btn-primary mx-3 mt-1 mb-3" onClick={this.goToRegisterPage.bind(this)}>
                                             Register Here
                                     </button>
-
                                     </div>
-
                                 </div>
-
-
                             </div>
-
-
                         </div>
-
-
                     </div>
-
                 </div>
-
-
-
-
-
-
-
-
-
-                {/* <div className="row">
-                    <div className="col-12 col-lg-6 mt-3">
-                        <div className="card">
-                            <div className="card-header text-center" >
-                                Login
-                            </div>
-                            <div className="card-body">
-                                <div className="form-group">
-                                    <input className="form-control"
-                                        value={this.state.topic}
-                                        onChange={this.handleInputChange}
-                                        name="email"
-                                        placeholder="Email"
-                                    />
-                                </div>
-
-                                <div className="form-group">
-                                    <input className="form-control"
-                                        value={this.state.topic}
-                                        onChange={this.handleInputChange}
-                                        name="password"
-                                        placeholder="Password"
-                                    />
-                                </div>
-                                <button className="btn text-light btn-primary"
-                                    disabled={!(this.state.email && this.state.password)}
-                                    onClick={this.login}
-                                >
-                                    Log In
-                            </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-12 col-lg-6 mt-3">
-                        <div className="card h-100">
-                            <div className="card-header text-center" >
-                                Register
-                            </div>
-                            <div className="card-body d-flex flex-column justify-content-between">
-                                <div>Register here.</div>
-                                <div>
-                                    <button className="btn text-light btn-primary" onClick={this.goToRegisterPage.bind(this)}>
-                                        Register
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
             </div >
         );
     }

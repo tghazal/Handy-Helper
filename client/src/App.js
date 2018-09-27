@@ -13,18 +13,16 @@ import Footer from "./components/Footer"
 class App extends Component {
 
   render() {
-    const footerFill = (
-      <div className="flex-grow-1" />
-    )
     return (
       <Router>
-        <div className="h-100 d-flex flex-column">
-          <Header />
-          <Route path="/main" component={Main} />
-          <Route exact path="/" component={Welcome} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login} />
-          {document.location.pathname === '/' ? null : footerFill}
+        <div className="flex-grow-1 d-flex flex-column">
+          <div className="flex-grow-1 d-flex flex-column">
+            <Header />
+            <Route path="/main" component={Main} />
+            <Route exact path="/" component={Welcome} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+          </div>
           <Footer />
         </div>
       </Router >
