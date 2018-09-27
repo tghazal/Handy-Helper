@@ -7,7 +7,8 @@ import Map from './components/Map';
 class SearchJobs extends React.Component {
 
   state = {
-    zipcode: ''
+    zipcode: '',
+    jobs: null,
   }
 
   componentDidUpdate() {
@@ -30,11 +31,30 @@ class SearchJobs extends React.Component {
     axios.get('/api/jobs/' + this.state.zipcode)
       .then(res => {
         console.log(res);
+        this.showJobs(res);
       })
       .catch(err => console.error(err));
   }
 
+  showJobs(res) {
+    this.setState({
+      jobs: res.data
+    })
+  }
+
   render() {
+    const jobsArray = [];
+    if (this.state.jobs) {
+      if (this.state.jobs.length === 0) {
+        jobsArray.push(
+          <div className="row my-3" key='no-jobs'>
+            <div className="col">
+              <h1>No Results.</h1>
+            </div>
+          </div>
+        )
+      }
+    }
     return (
       <div className="container text-center">
         <div className="row">
@@ -57,9 +77,8 @@ class SearchJobs extends React.Component {
             </div>
           </FormGroup>
         </Form>
-        <Map>
-
-        </Map>
+        <Map />
+        {jobsArray}
       </div>
     )
   }
