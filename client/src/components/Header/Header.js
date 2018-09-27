@@ -42,7 +42,7 @@ class Header extends React.Component {
               <Navbar className="headercolor" light expand="md">
                 <Link to={localStorage.getItem('id_token') ? '/main/home' : '/'} className="navbar-brand text-light font-weight-bold border rounded p-0" id="brand">
                   <div className="btn px-2 py-1 lettercolor1">
-                    HH
+                  H<i className="fa fa-wrench fa-spin fa-3x fa-fw" aria-hidden="true"></i>H
                 </div>
                 </Link>
                 <Nav className="ml-auto" navbar>

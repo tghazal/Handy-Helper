@@ -41,6 +41,7 @@ class Login extends Component {
     goToRegisterPage() {
         window.location.href = window.location.origin + '/register'
     }
+    
 
     render() {
         return (
@@ -74,6 +75,7 @@ class Login extends Component {
                                                 onChange={this.handleInputChange}
                                                 name="password"
                                                 placeholder="Password"
+                                                type="password"
                                             />
                                         </div>
                                         <button className="btn text-light btn-primary m-3"
