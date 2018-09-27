@@ -4,7 +4,7 @@ import "./Address.css"
 class Address extends Component {
     render() {
         return (
-            <div className="row mb-3">
+            <div className="row mb-3 border rounded">
                 <div className="col-md-12 p-0">
                     <div className="card">
                         <div className="card-header text-center" >

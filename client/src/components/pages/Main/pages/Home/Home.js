@@ -30,13 +30,13 @@ export default class Home extends React.Component {
       <div>
         <div className="container ">
 
-          <div className="row my-4 bg-light border ">
+          <div className="row my-4 bg-light border rounded  ">
 
             <div className="col-md-4 picture picturepadding d-flex justify-content-center mt-2">
               <div className="middle">
                 <h1> <ion-icon name="add-circle-outline" >+</ion-icon></h1>
               </div>
-              <Dropzone width="100%"  onDrop={this.props.onDrop} className="img-thumbnail" ><img className="img-thumbnail" width="100%" height="100%" src={this.props.mainState.image?  this.props.mainState.image : "https://process.filestackapi.com/AIsgBhhXAQiO1fMgTiIKSz/resize=width:650,height:650,fit:scale,align:center/rotate=deg:exif/https://cdn.trustwork.com/images/internal_assets/default-profile-img-1.png"} className="img-responsive" /></Dropzone>
+              <Dropzone width="100%"  onDrop={this.props.onDrop} className="img-thumbnail" ><img className="img-thumbnail" width="100%" height="100%" src={this.props.mainState.image?  this.props.mainState.image : "../../../../../images/profileImage.png"} className="img-responsive" /></Dropzone>
             </div>
 
             <div className="col-md-6 mt-4 mb-4">
