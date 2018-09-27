@@ -3,6 +3,7 @@ import './Header.css';
 import { Navbar, Nav } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import AuthService from '../AuthService';
+import icon from '../../icon.png';
 
 //components
 import { Login, Logout } from './components';
@@ -41,8 +42,8 @@ class Header extends React.Component {
             <div className="col px-0">
               <Navbar light expand="md">
                 <Link to={localStorage.getItem('id_token') ? '/main/home' : '/'} className="navbar-brand font-weight-bold p-0" id="brand">
-                  <div className="btn btn-secondary px-2 py-1">
-                    HH
+                  <div className="btn btn-secondary p-1">
+                    <img style={{ height: '28px' }} src={icon} alt="icon" />
                   </div>
                 </Link>
                 <Nav className="ml-auto" navbar>
