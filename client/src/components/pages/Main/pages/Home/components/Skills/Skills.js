@@ -5,9 +5,9 @@ class Skills extends Component {
     render() {
         return (
             <div className="row mb-3">
-               <div className="col-md-12 p-0">
+                <div className="col-md-12">
                     <div className="card">
-                        <div className="card-header text-center" >
+                        <div className="card-header" >
                             Skills
                     </div>
                         <div className="card-body">

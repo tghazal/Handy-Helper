@@ -9,11 +9,11 @@ const Welcome = (props) => {
           <h1 className="title display-1 font-weight-bold outline">
             <strong>Need Help?</strong>
           </h1>
-          <div>
-            <a className="btn btn-clear btn-lg btn-min-block mt-2 welcome-buttons-bg outline-sm" href="/login" style={{ fontSize: '1.6rem' }}>
+          <div className="mb-2">
+            <a className="btn btn-clear btn-lg btn-min-block welcome-buttons-bg outline-sm m-2" href="/login" style={{ fontSize: '1.6rem' }}>
               <strong>Login</strong>
             </a>
-            <a className="btn btn-clear btn-lg btn-min-block mt-2"
+            <a className="btn btn-clear btn-lg btn-min-block m-2"
               href="/register" style={{ fontSize: '1.6rem' }}>
               <strong>Register</strong>
             </a>
