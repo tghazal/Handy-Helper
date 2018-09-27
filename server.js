@@ -33,7 +33,7 @@ const auth = jwt({
 });
 
 // Configure body parser for AJAX requests
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true ,limit:'50mb'}));
 app.use(bodyParser.json());
 
 // Serve up static assets

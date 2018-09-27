@@ -4,8 +4,8 @@ import "./Skills.css"
 class Skills extends Component {
     render() {
         return (
-            <div className="row">
-                <div className="col">
+            <div className="row mb-3">
+               <div className="col-md-12 p-0">
                     <div className="card">
                         <div className="card-header text-center" >
                             Skills
