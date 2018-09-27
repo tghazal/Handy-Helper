@@ -1,14 +1,16 @@
 import React from 'react';
 import './SearchJobs.css';
-import { Form, FormGroup, Label, Input } from 'reactstrap';
+import { Form, FormGroup, Input } from 'reactstrap';
 import axios from 'axios';
 import Map from './components/Map';
+import Spinner from '../../../../Spinner/Spinner';
 
 class SearchJobs extends React.Component {
 
   state = {
     zipcode: '',
     jobs: null,
+    spinner: false,
   }
 
   componentDidUpdate() {
@@ -28,9 +30,11 @@ class SearchJobs extends React.Component {
 
   searchJobs(event) {
     event.preventDefault();
+    this.toggle1();
     axios.get('/api/jobs/' + this.state.zipcode)
       .then(res => {
         console.log(res);
+        this.toggle1();
         this.showJobs(res);
       })
       .catch(err => console.error(err));
@@ -40,6 +44,12 @@ class SearchJobs extends React.Component {
     this.setState({
       jobs: res.data
     })
+  }
+
+  toggle1() {
+    this.setState({
+      spinner: !this.state.spinner
+    });
   }
 
   render() {
@@ -55,8 +65,9 @@ class SearchJobs extends React.Component {
         )
       }
     }
+
     return (
-      <div className="container text-center">
+      <div className="container text-center filler">
         <div className="row">
           <div className="col">
             <h1>Search</h1>
@@ -65,13 +76,10 @@ class SearchJobs extends React.Component {
         <Form>
           <FormGroup>
             <div className="row justify-content-center">
-              <div className="col-auto d-flex align-items-center">
-                <Label for="zip-code-input" className="mb-0"></Label>
-              </div>
-              <div className="col pl-0" style={{ maxWidth: '400px' }}>
+              <div className="col" style={{ maxWidth: '400px' }}>
                 <Input className="form-input" id="zip-code-input" placeholder="Zip Code" onChange={this.handler.bind(this)} value={this.state.zipcode} name='zipcode' />
               </div>
-              <div className="col-auto p-0">
+              <div className="col-auto pl-0 py-0">
                 <button className="btn btn-primary" onClick={this.searchJobs.bind(this)} >Search</button>
               </div>
             </div>
@@ -79,6 +87,7 @@ class SearchJobs extends React.Component {
         </Form>
         <Map />
         {jobsArray}
+        <Spinner isOpen={this.state.spinner} />
       </div>
     )
   }

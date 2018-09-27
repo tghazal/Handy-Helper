@@ -4,11 +4,13 @@ import { withGoogleMap, GoogleMap } from 'react-google-maps';
 class Map extends Component {
   render() {
     return (
-      <div>
-        <GoogleMapExample
-          containerElement={<div style={{ height: `500px`, width: '100%' }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-        />
+      <div className="row">
+        <div className="col d-flex justify-content-center">
+          <GoogleMapExample
+            containerElement={<div style={{ height: `500px`, width: '100%', maxWidth: '700px', maxHeight: '75vh' }} />}
+            mapElement={<div style={{ height: '100%' }} />}
+          />
+        </div>
       </div>
     );
   }

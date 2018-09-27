@@ -1,3 +1,8 @@
+.outline {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+}
+
 .main-text {
     position: absolute;
     top: 50px;
@@ -12,7 +17,7 @@
 
 .btn-clear {
     color: black;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.705);
     border-color: black;
     margin-right: 15px;
 }

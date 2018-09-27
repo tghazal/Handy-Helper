@@ -120,7 +120,7 @@ class Main extends Component {
 
   render() {
     return (
-      <div>
+      <div className="d-flex flex-column flex-grow-1">
         <Route exact path="/main/home" render={(props) => <Home mainState={this.state} onChange={this.handleInputChange} onClick={this.addSkill} onAddressClick={this.editAddress} onView={this.viewAddress} onDrop={this.saveImage} />} />
         <Route exact path="/main/search-jobs" render={(props) => <SearchJobs mainState={this.state} />} />
         <Route exact path="/main/post-job" render={(props) => <PostJob mainState={this.state} />} />

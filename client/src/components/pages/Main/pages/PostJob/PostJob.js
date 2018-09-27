@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input, Modal, ModalBody, FormFeedback, ModalHeader, ModalFooter } from 'reactstrap';
-import Spinner from '../../../../../images/spinner.svg';
+import Spinner from '../../../../Spinner/Spinner';
 import './PostJob.css';
 import axios from 'axios';
 
@@ -9,8 +9,8 @@ export default class PostJob extends React.Component {
     title: '',
     category: '',
     description: '',
-    modal1: false,
-    modal2: false
+    spinner: false,
+    success: false
   }
 
   handler(event) {
@@ -37,7 +37,6 @@ export default class PostJob extends React.Component {
     const categoryInput = document.getElementById('category-input');
     const descriptionInput = document.getElementById('description-input');
 
-
     //form validation
     if (!title || !category || !description) {
       if (!title) titleInput.classList.add('is-invalid');
@@ -56,6 +55,8 @@ export default class PostJob extends React.Component {
         descriptionInput.classList.add('is-valid');
       }
     } else {
+
+      //request
       this.toggle1();
       axios.post('/api/jobs', {
         owner: this.props.mainState.id,
@@ -79,13 +80,13 @@ export default class PostJob extends React.Component {
 
   toggle1() {
     this.setState({
-      modal1: !this.state.modal1
+      spinner: !this.state.spinner
     });
   }
 
   toggle2() {
     this.setState({
-      modal2: !this.state.modal2
+      success: !this.state.success
     });
   }
 
@@ -119,10 +120,8 @@ export default class PostJob extends React.Component {
             </Form>
           </div>
         </div>
-        <Modal isOpen={this.state.modal1} zIndex="10000" className="pr-0" centered onEnter={this.removeStyling}>
-          <img src={Spinner} alt="spinner" />
-        </Modal>
-        <Modal isOpen={this.state.modal2} zIndex="10000" className="pr-0" centered onEnter={this.addStyling}>
+        <Spinner isOpen={this.state.spinner} />
+        <Modal isOpen={this.state.success} zIndex="10000" className="pr-0" centered onEnter={this.addStyling}>
           <ModalHeader>
             Success!!
           </ModalHeader>
@@ -132,7 +131,7 @@ export default class PostJob extends React.Component {
           <ModalFooter>
             <div className="w-100">
               <button className="btn btn-block btn-primary" onClick={this.toggle2.bind(this)}>Create Another Job</button>
-              <button className="btn btn-block btn-primary mt-3" onClick={this.redirect.bind(this)}>Close</button>
+              <button className="btn btn-block btn-primary mt-3" onClick={this.redirect.bind(this)}>Home</button>
             </div>
           </ModalFooter>
         </Modal>
