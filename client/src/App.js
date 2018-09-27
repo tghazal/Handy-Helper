@@ -15,8 +15,8 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="flex-grow-1 d-flex flex-column">
-          <div className="flex-grow-1 d-flex flex-column">
+        <div className="filler">
+          <div className="filler">
             <Header />
             <Route path="/main" component={Main} />
             <Route exact path="/" component={Welcome} />
