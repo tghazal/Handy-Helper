@@ -89,10 +89,10 @@ router.put('/job/update/:id/:method', ctrl.Job.put);
 router.post('/job/post', ctrl.Job.post);
 
 // UserData
-router.get('/job', ctrl.UserData.find);
-router.get('/job/:id', ctrl.UserData.findById);
-router.get('/job/populate/:id/:field', ctrl.UserData.populate);
-router.delete('/job/delete', ctrl.UserData.delete);
-router.put('/job/update/:id/:method', ctrl.UserData.put);
+router.get('/userData', ctrl.UserData.find);
+router.get('/userData/:id', ctrl.UserData.findById);
+router.get('/userData/populate/:id/:field', ctrl.UserData.populate);
+router.delete('/userData/delete', ctrl.UserData.delete);
+router.put('/userData/update/:id/:method', ctrl.UserData.put);
 
 module.exports = router;
