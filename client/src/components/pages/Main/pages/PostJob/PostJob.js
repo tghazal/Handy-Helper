@@ -10,7 +10,7 @@ export default class PostJob extends React.Component {
     title: '',
     category: '',
     description: '',
-    address: '',//this is just a string in purpose of viewing it on the page 
+    address: '', //this is just a string in purpose of viewing it on the page 
     address1: '',
     address2: '',
     state: '',
@@ -23,22 +23,21 @@ export default class PostJob extends React.Component {
 
   componentDidMount = () => {
     let address = '';
-    if((!this.props.mainState.address1 )||(!this.props.mainState.state)||(!this.props.mainState.city)||(!this.props.mainState.zip))
-    {
-      address="";
-    }
-    else{
-    if (this.props.mainState.address2) {
-      address = this.props.mainState.address1 + " " + this.props.mainState.address2 + " " + this.props.mainState.state + " " + this.props.mainState.city + " " + this.props.mainState.zip
+    if ((!this.props.mainState.address1) || (!this.props.mainState.state) || (!this.props.mainState.city) || (!this.props.mainState.zip)) {
+      address = "";
     }
     else {
-      address = this.props.mainState.address1 + " " + this.props.mainState.state + " " + this.props.mainState.city + " " + this.props.mainState.zip
+      if (this.props.mainState.address2) {
+        address = this.props.mainState.address1 + " " + this.props.mainState.address2 + " " + this.props.mainState.state + " " + this.props.mainState.city + " " + this.props.mainState.zip
+      }
+      else {
+        address = this.props.mainState.address1 + " " + this.props.mainState.state + " " + this.props.mainState.city + " " + this.props.mainState.zip
+      }
     }
-  }
     this.setState({ address: address, address1: this.props.mainState.address1, address2: this.props.mainState.address2, state: this.props.mainState.state, city: this.props.mainState.city, zip: this.props.mainState.zip })
   }
 
-  handler=(event) => {
+  handler = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
@@ -57,23 +56,21 @@ export default class PostJob extends React.Component {
     event.preventDefault();
     this.setState({ addressFlag: 0 })
     let address = '';
-    if (this.state.address2) 
-    {
+    if (this.state.address2) {
       address = this.state.address1 + " " + this.state.address2 + " " + this.state.state + " " + this.state.city + " " + this.state.zip
     }
-    else
-     {
-      address = this.state.address1 + " "  + this.state.state + " " + this.state.city + " " + this.state.zip
-    this.setState({ address: address, address1: this.props.mainState.address1, address2: this.props.mainState.address2, state: this.props.mainState.state, city: this.props.mainState.city, zip: this.props.mainState.zip })
-     }
+    else {
+      address = this.state.address1 + " " + this.state.state + " " + this.state.city + " " + this.state.zip
+      this.setState({ address: address, address1: this.props.mainState.address1, address2: this.props.mainState.address2, state: this.props.mainState.state, city: this.props.mainState.city, zip: this.props.mainState.zip })
+    }
   }
 
-  
+
   viewAddress = (e) => {
     e.preventDefault();
-        this.setState({ addressFlag: 1 })
-      }
-    
+    this.setState({ addressFlag: 1 })
+  }
+
 
   submit(event) {
     event.preventDefault();
@@ -84,7 +81,7 @@ export default class PostJob extends React.Component {
     const titleInput = document.getElementById('title-input');
     const categoryInput = document.getElementById('category-input');
     const descriptionInput = document.getElementById('description-input');
-    const addressInput =  document.getElementById('address-input');
+    const addressInput = document.getElementById('address-input');
 
     //form validation
     if (!title || !category || !description || !address) {
@@ -106,7 +103,7 @@ export default class PostJob extends React.Component {
       if (!address) addressInput.classList.add('is-invalid');
       else {
         addressInput.classList.remove('is-invalid');
-       addressInput.classList.add('is-valid');
+        addressInput.classList.add('is-valid');
       }
     } else {
 
@@ -117,7 +114,13 @@ export default class PostJob extends React.Component {
         title: this.state.title,
         description: this.state.description,
         category: this.state.category,
-        address: this.props.mainState.address,//now you can take address1,address2,state,city,zip from his.state
+        address: {
+          address1: this.state.address1,
+          address2: this.state.address2,
+          city: this.state.city,
+          state: this.state.state,
+          zip: this.state.zip
+        } //now you can take address1,address2,state,city,zip from his.state
       })
         .then(res => {
           this.toggle1();
