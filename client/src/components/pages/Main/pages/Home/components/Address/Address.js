@@ -13,15 +13,16 @@ class Address extends Component {
                         <div className="card-body">
                             <div className="form-group form-inline">
                             <label for="address1" style={{width: "100px"}}>Address1 : </label>
-                                <input className="form-control  "
+                                <input className="form-control  m-1"
                                     name={"address1"}
                                     value={this.props.address1}
                                     placeholder={"address1"}
                                     onChange={this.props.onChange}
                                 />
+                                
 
                                  <label for="address2" style={{width: "100px"}}>Address2 : </label>
-                                <input className="form-control"
+                                <input className="form-control m-1"
                                     name={"address2"}
                                     value={this.props.address2}
                                     placeholder={"address2"}
@@ -29,7 +30,7 @@ class Address extends Component {
                                 />
 
                                  <label for="city" style={{width: "100px"}} >    City : </label>
-                                <input className="form-control"
+                                <input className="form-control m-1"
                                     name={"city"}
                                     value={this.props.city}
                                     placeholder={"city"}
@@ -37,14 +38,14 @@ class Address extends Component {
                                 />
 
                                 <label for="state" style={{width: "100px"}} >State : </label>
-                                <input className="form-control"
+                                <input className="form-control m-1"
                                     name={"state"}
                                     value={this.props.state}
                                     placeholder={"state"}
                                     onChange={this.props.onChange}
                                 />
                                  <label for="zip" style={{width: "100px"}} >Zip :</label>
-                                <input className="form-control"
+                                <input className="form-control m-1"
                                     name={"zip"}
                                     value={this.props.zip}
                                     placeholder={"zip"}

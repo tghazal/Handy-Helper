@@ -43,7 +43,7 @@ class Header extends React.Component {
               <Navbar light expand="md">
                 <Link to={localStorage.getItem('id_token') ? '/main/home' : '/'} className="navbar-brand font-weight-bold p-0" id="brand">
                   <div className="btn btn-secondary p-1">
-                    <img style={{ height: '28px' }} src={icon} alt="icon" />
+                    <img className="logo" style={{ height: '28px' }} src={icon} alt="icon" />
                   </div>
                 </Link>
                 <Nav className="ml-auto" navbar>
