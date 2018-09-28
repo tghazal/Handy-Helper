@@ -4,28 +4,25 @@ const Schema = mongoose.Schema;
 const Job = require('./job.model');
 
 const UserDataSchema = new Schema({
-  firstName: String,
-  lastName: String,
-  email: String,
-  photo: String,
-  phone: Number,
-  skills: [],
-  image: Buffer,
-
-
+  firstName: { type: String, default: null },
+  lastName: { type: String, default: null },
+  email: { type: String, default: null },
+  photo: { type: String, default: null },
+  phone: { type: Number, default: null },
+  image: { type: Buffer, default: null },
   address:
   {
-    address1: String,
-    address2: String,
-    city: String,
-    state: String,
-    zip: Number
-  }
-  ,
+    address1: { type: String, default: null },
+    address2: { type: String, default: null },
+    city: { type: String, default: null },
+    state: { type: String, default: null },
+    zip: { type: String, default: null }
+  },
+  skills: { type: Array, default: [] },
   myJobs: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Job'
+      ref: 'Job',
     }
   ],
   myBids: [
@@ -38,7 +35,11 @@ const UserDataSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: 'Job',
-      self: Boolean
+      myJob: {
+        type: Boolean,
+        default: null,
+        required: true
+      },
     }
   ]
 });
