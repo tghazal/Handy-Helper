@@ -20,8 +20,10 @@ const jobSchema = new Schema({
   },
   bids: [
     {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      },
       price: Number,
       status: {
         type: String,

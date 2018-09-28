@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import PostJob from './pages/PostJob/PostJob';
 import SearchJobs from './pages/SearchJobs/SearchJobs';
 import Home from './pages/Home/Home';
+import axios from 'axios';
 
 class Main extends Component {
   constructor() {
@@ -73,12 +74,10 @@ class Main extends Component {
     });
   }
 
-
   viewAddress = (e) => {
-e.preventDefault();
+    e.preventDefault();
     this.setState({ addressFlag: 1 })
   }
-
 
   addSkill = () => {
     let tempSkillArray = this.state.skills;
@@ -88,8 +87,6 @@ e.preventDefault();
       .catch(err => console.log(err));
     this.setState({ skill: "" })
   }
-
-
 
   saveImage = (files) => {
     const reader = new FileReader();
@@ -119,12 +116,43 @@ e.preventDefault();
       .catch(err => console.log(err));
   }
 
+  confirmBid() {
+
+  }
+
+  getUserDataById(event) {
+    event.preventDefault();
+    console.log('hello');
+    const id = this.state.id;
+    axios.get(`/api/userData/${id}`)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.error(err);
+      })
+  }
+
+  getUserDataPopulate(event) {
+    event.preventDefault();
+    const id = this.state.id;
+    const field = 'myJobs';
+    axios.get(`/api/userData/populate/${id}/${field}`)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.error(err);
+      })
+  }
+
   render() {
     return (
       <div className="d-flex flex-column flex-grow-1">
         <Route exact path="/main/home" render={(props) => <Home mainState={this.state} onChange={this.handleInputChange} onClick={this.addSkill} onAddressClick={this.editAddress} onView={this.viewAddress} onDrop={this.saveImage} />} />
         <Route exact path="/main/search-jobs" render={(props) => <SearchJobs mainState={this.state} />} />
         <Route exact path="/main/post-job" render={(props) => <PostJob mainState={this.state} />} />
+        <button className="btn btn-primary" onClick={this.getUserDataPopulate.bind(this)}>API Test</button>
       </div>
     );
   }
