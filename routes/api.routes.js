@@ -17,7 +17,7 @@ router.get("/getUserInfo/:email", function (req, res) {
 //get jobs by zipcode
 router.get('/jobs/:zipcode', (req, res) => {
   console.log(req.params);
-  models.Job.find({ 'address.from': req.params.zipcode })
+  models.Job.find({ 'address.zip': req.params.zipcode })
     .then(jobs => res.json(jobs))
     .catch(err => {
       res.status(500).json(err);
@@ -69,8 +69,8 @@ router.post("/updateSkills", function (req, res) {
 
 router.post("/saveimage", function (req, res) {
   console.log("in routes update image " + req.body.file)
- 
-  models.UserData.findOneAndUpdate({ email: req.body.email }, { image: req.body.file})
+
+  models.UserData.findOneAndUpdate({ email: req.body.email }, { image: req.body.file })
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
 });
