@@ -24,7 +24,7 @@ class Address extends Component {
                                  <label for="address2" style={{width: "100px"}}>Address2 : </label>
                                 <input className="form-control m-1"
                                     name={"address2"}
-                                    value={this.props.address2}
+                                    value={this.props.address2 }
                                     placeholder={"address2"}
                                     onChange={this.props.onChange}
                                 />
