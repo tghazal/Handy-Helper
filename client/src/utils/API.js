@@ -26,6 +26,11 @@ export default {
     },
     updateAddress: function (data) {
         return axios.post("/api/updateAdress", data)
+    },
+
+    saveBid : function(user,priceNumber,status,jobId){
+        let data = { user : user , priceNumber : priceNumber ,status:status,jobId:jobId }
+        return axios.post("/api/savebid",data)
     }
 
 }
