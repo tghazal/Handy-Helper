@@ -54,6 +54,7 @@ export default class Home extends React.Component {
             </div>
             <div className="col-6 col-md flex-column justify-content-between align-self-stretch p-3 p-md-4">
               <h3>Address:
+
                 <br />
                 <div className="address">
                   {this.props.mainState.address1}
@@ -65,6 +66,7 @@ export default class Home extends React.Component {
                   <br />
                   {this.props.mainState.zip}
                 </div>
+
               </h3>
               <a href="" onClick={this.props.onView}>Edit Address</a>
 
