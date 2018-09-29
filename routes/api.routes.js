@@ -77,6 +77,26 @@ router.post("/saveimage", function (req, res) {
     .catch(err => res.status(422).json(err));
 });
 
+router.post("/savebid", function (req, res) {
+ 
+  let bids = 
+  {
+    user:req.body.user,
+    price:req.body.priceNumber,
+    status:req.body.status,
+  }
+  console.log(bids)
+  console.log(req.body.jobId)
+  models.Job.findOneAndUpdate({ _id: req.body.jobId }, { bids: bids })
+    .then( dbModel => console.log(dbModel))
+    .then(() => {
+      models.UserData.findOneAndUpdate({_id:req.body.user},{$push:{myBids:req.body.jobId}})
+        .then(data =>res.json("successfully submitted a bid"))
+    })
+     
+    .catch(err => console.error(err));
+});
+
 // rest API
 /*-------------------------------------------------------*/
 
@@ -94,5 +114,15 @@ router.get('/userData/:id', ctrl.UserData.findById);
 router.get('/userData/populate/:id/:field', ctrl.UserData.populate);
 router.delete('/userData/delete', ctrl.UserData.delete);
 router.put('/userData/update/:id/:method', ctrl.UserData.put);
+
+router.post("/savebid", function (req, res) {
+  console.log("in routes update image " + req.body.id + "price"+req.body.price)
+  let bids ={user:req.body.user,price:req.body.price,status:"pending"}
+  console.log(bids)
+  // models.jobs.findOneAndUpdate({ _id: req.body.id }, { bids: bids })
+  //   .then(dbModel => res.json(dbModel))
+  //   .catch(err => res.status(422).json(err));
+});
+
 
 module.exports = router;

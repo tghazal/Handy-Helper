@@ -121,7 +121,7 @@ export default class PostJob extends React.Component {
           state: this.state.state,
           zip: this.state.zip
         } //now you can take address1,address2,state,city,zip from his.state
-      })
+        })
         .then(res => {
           this.toggle1();
           this.toggle2();
@@ -132,7 +132,7 @@ export default class PostJob extends React.Component {
           console.error(err);
           this.toggle1();
         })
-    }
+      }
   }
 
   toggle1() {

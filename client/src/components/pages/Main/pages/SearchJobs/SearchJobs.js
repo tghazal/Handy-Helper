@@ -4,6 +4,8 @@ import { Form, FormGroup, Input } from 'reactstrap';
 import axios from 'axios';
 import Map from './components/Map';
 import Spinner from '../../../../Spinner/Spinner';
+import API from '../../../../../utils/API';
+//import bootbox from "../../../../../bootbox.min";
 
 class SearchJobs extends React.Component {
 
@@ -46,24 +48,68 @@ class SearchJobs extends React.Component {
     })
   }
 
+  makeBid = (jobId) => {
+const input=document.getElementById(jobId);
+let priceInput = input.value;
+let priceNumber=Number(priceInput);
+let user= this.props.mainState.id;
+let status="pending"
+API.saveBid(user,priceNumber,status,jobId)
+.then(res=>console.log(res.data))//need modal here for res.data
+.catch(err=>console.log(err))
+  }
+  
   toggle1() {
     this.setState({
       spinner: !this.state.spinner
     });
   }
+  
+  showDescription = (des) =>{
+    console.log(des)//need modal here for des
+
+
+  }
 
   render() {
-    const jobsArray = [];
+    let jobsArray = [];
     if (this.state.jobs) {
-      if (this.state.jobs.length === 0) {
+      const myJobs = this.state.jobs;
+
+      myJobs.forEach(elem => {
+        let address = elem.address.address1 + "," + elem.address.address2 + "," + elem.address.state + "," + elem.address.city + "," + elem.address.zip
         jobsArray.push(
-          <div className="row my-3" key='no-jobs'>
-            <div className="col">
-              <h1>No Results.</h1>
-            </div>
-          </div>
+          <tr key={elem._id}>
+
+            <th scope="col-md-3">
+              {elem.title}
+            </th>
+
+            <th scope="col-md-3">
+              {elem.category}
+            </th>
+
+            <th scope="col-md-3">
+             <a href ="#" onClick={()=>this.showDescription(elem.description)}>Description</a>
+            </th>
+
+            <th scope="col-md-3">
+              {address}
+            </th>
+
+            <th scope="col-md-3">
+            <Input className="priceInput" placeholder="price $" id={elem._id} />
+            </th>
+
+            <th scope="col-md-3">
+              <button className="bidButton btn btn-primary text-center" onClick={()=>this.makeBid(elem._id)} > Submit a bid </button>
+            </th>
+
+           
+
+          </tr>
         )
-      }
+      })
     }
 
     return (
@@ -86,7 +132,24 @@ class SearchJobs extends React.Component {
           </FormGroup>
         </Form>
         <Map />
-        {jobsArray}
+        <div className="col-md-10 mb-5 mt-5 offset-md-1 ">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col-md-3">Title</th>
+                <th scope="col-md-3">Category</th>
+                <th scope="col-md-3">Description</th>
+                <th scope="col-md-3">Address</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {this.state.jobs ? jobsArray : "No Results."}
+
+            </tbody>
+          </table>
+
+        </div>
         <Spinner isOpen={this.state.spinner} />
       </div>
     )
