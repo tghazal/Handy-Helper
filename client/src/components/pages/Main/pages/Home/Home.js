@@ -55,14 +55,16 @@ export default class Home extends React.Component {
               <div className="col-6 col-md flex-column justify-content-between align-self-stretch p-3 p-md-4">
               <h3>Address:
                 <br/>
-                {this.props.mainState.address1}               
-                {this.props.mainState.address2}
-                <br/>
-                {this.props.mainState.city}
-                <br/>
-                {this.props.mainState.state}
-                <br/>
-                {this.props.mainState.zip}
+                  <div className="address">
+                  {this.props.mainState.address1}               
+                  {this.props.mainState.address2}
+                  <br/>
+                  {this.props.mainState.city}
+                  <br/>
+                  {this.props.mainState.state}
+                  <br/>
+                  {this.props.mainState.zip}
+                  </div>
               </h3>
               <a href="" onClick={this.props.onView}>Edit Address</a>
               
