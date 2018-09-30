@@ -5,6 +5,9 @@ import axios from 'axios';
 import Map from './components/Map';
 import Spinner from '../../../../Spinner/Spinner';
 import API from '../../../../../utils/API';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
+
 //import bootbox from "../../../../../bootbox.min";
 
 class SearchJobs extends React.Component {
@@ -13,7 +16,15 @@ class SearchJobs extends React.Component {
     zipcode: '',
     jobs: null,
     spinner: false,
+    modal: false,
   }
+
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
+
 
   componentDidUpdate() {
     if (this.state.zipcode.length > 5) {
@@ -49,23 +60,23 @@ class SearchJobs extends React.Component {
   }
 
   makeBid = (jobId) => {
-const input=document.getElementById(jobId);
-let priceInput = input.value;
-let priceNumber=Number(priceInput);
-let user= this.props.mainState.id;
-let status="pending"
-API.saveBid(user,priceNumber,status,jobId)
-.then(res=>console.log(res.data))//need modal here for res.data
-.catch(err=>console.log(err))
+    const input = document.getElementById(jobId);
+    let priceInput = input.value;
+    let priceNumber = Number(priceInput);
+    let user = this.props.mainState.id;
+    let status = "pending"
+    API.saveBid(user, priceNumber, status, jobId)
+      .then(res => console.log(res.data))//need modal here for res.data
+      .catch(err => console.log(err))
   }
-  
+
   toggle1() {
     this.setState({
       spinner: !this.state.spinner
     });
   }
-  
-  showDescription = (des) =>{
+
+  showDescription = (des) => {
     console.log(des)//need modal here for des
 
 
@@ -90,7 +101,20 @@ API.saveBid(user,priceNumber,status,jobId)
             </th>
 
             <th scope="col-md-3">
-             <a href ="#" onClick={()=>this.showDescription(elem.description)}>Description</a>
+              {/* <a href ="#" onClick={()=>this.showDescription(elem.description)}>Description</a> */}
+              <Button onClick={this.toggle}><a href="#" onClick={() => this.showDescription(elem.description)}>Description</a></Button>
+              {/* MODAL */}
+              <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                <ModalHeader toggle={this.toggle}>Job Description</ModalHeader>
+                <ModalBody>
+                  {elem.description}
+                </ModalBody>
+
+                <ModalFooter>
+                  <Button color="danger" onClick={this.toggle}>Close</Button>
+
+                </ModalFooter>
+              </Modal>
             </th>
 
             <th scope="col-md-3">
@@ -98,14 +122,17 @@ API.saveBid(user,priceNumber,status,jobId)
             </th>
 
             <th scope="col-md-3">
-            <Input className="priceInput" placeholder="price $" id={elem._id} />
+              <Input className="priceInput" placeholder="price $" id={elem._id} />
             </th>
 
             <th scope="col-md-3">
-              <button className="bidButton btn btn-primary text-center" onClick={()=>this.makeBid(elem._id)} > Submit a bid </button>
+              {/* <button className="bidButton btn btn-primary text-center" onClick={() => this.makeBid(elem._id)} > Submit a bid </button> */}
+              <button onClick={(e) => { if (window.alert('Successfully Submitted!')) this.makeBid(elem._id) }}>
+                <a href="#" onClick={() => this.makeBid(elem._id)}>Bid</a>
+              </button>
             </th>
 
-           
+
 
           </tr>
         )

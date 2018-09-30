@@ -32,3 +32,7 @@ a {
 .picturepadding {
     padding-bottom: 10px;
 }
+
+.w-100 {
+    width: 50px;
+}
