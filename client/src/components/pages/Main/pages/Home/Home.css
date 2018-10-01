@@ -40,3 +40,8 @@ a {
     margin: -15px;
     padding-top: 10px;
 }
+.searchJobsBtn {
+    padding-top: 10px;
+    position: relative;
+    right: 15px
+}
