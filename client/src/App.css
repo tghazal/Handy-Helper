@@ -24,6 +24,26 @@ body {
   min-height: 0px
 }
 
+.btn-circle {
+  border-radius: 50%;
+  background: none;
+  transition: all 1s;
+}
+
+.btn-circle:focus {
+  border-color: none;
+  box-shadow: none;
+}
+
+.btn-circle:hover {
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.btn-circle:active {
+  border-radius: 50%;
+}
+
 .btn-primary {
   background-color: #FF3B3F;
   border-color: rgb(100, 100, 100);
@@ -49,7 +69,7 @@ body {
 }
 
 .btn.btn-primary:disabled {
-  background-color: #FF3B3F;
+  background-color: #FF3B3F!important;
   border-color: rgb(100, 100, 100);
   box-shadow: none;
 }
@@ -70,8 +90,8 @@ body {
 }
 
 .btn-secondary:focus {
-  background-color: #A9A9A9;
-  border-color: black;
+  background-color: none;
+  border-color: none;
   box-shadow: none;
 }
 

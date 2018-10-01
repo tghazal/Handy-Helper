@@ -116,10 +116,6 @@ class Main extends Component {
       .catch(err => console.log(err));
   }
 
-  confirmBid() {
-
-  }
-
   getUserDataById(event) {
     event.preventDefault();
     console.log('hello');
@@ -146,13 +142,26 @@ class Main extends Component {
       })
   }
 
+  confirmBid(jobId, userId) {
+    axios.put('/api/bid/confirm', {
+      jobId: jobId,
+      userId: userId
+    })
+      .then(() => {
+        this.getUserInfo(this.Auth.getProfile().email);
+        this.setState({
+          name: this.Auth.getProfile().name,
+          email: this.Auth.getProfile().email
+        });
+      });
+  }
+
   render() {
     return (
       <div className="d-flex flex-column flex-grow-1">
-        <Route exact path="/main/home" render={(props) => <Home mainState={this.state} onChange={this.handleInputChange} onClick={this.addSkill} onAddressClick={this.editAddress} onView={this.viewAddress} onDrop={this.saveImage} />} />
-        <Route exact path="/main/search-jobs" render={(props) => <SearchJobs mainState={this.state} />} />
-        <Route exact path="/main/post-job" render={(props) => <PostJob mainState={this.state} />} />
-        <button className="btn btn-primary" onClick={this.getUserDataPopulate.bind(this)}>API Test</button>
+        <Route exact path="/main/home" render={(props) => <Home {...props} mainState={this.state} onChange={this.handleInputChange} onClick={this.addSkill} onAddressClick={this.editAddress} onView={this.viewAddress} onDrop={this.saveImage} confirmBid={this.confirmBid.bind(this)} />} />
+        <Route exact path="/main/search-jobs" render={(props) => <SearchJobs {...props} mainState={this.state} />} />
+        <Route exact path="/main/post-job" render={(props) => <PostJob {...props} mainState={this.state} />} />
       </div>
     );
   }

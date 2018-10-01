@@ -18,6 +18,10 @@ a {
     color: #A9A9A9;
 }
 
+.maxWidth {
+    max-width: 10px;
+}
+
 .middle {
     transition: .5s ease;
     opacity: 0;
@@ -32,11 +36,8 @@ a {
 .picturepadding {
     padding-bottom: 10px;
 }
+
 .address {
     font-size: 16px;
-    padding-top: 10px;
-}
-.profile {
-    margin: -15px;
     padding-top: 10px;
 }
