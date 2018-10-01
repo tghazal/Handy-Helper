@@ -2,15 +2,3 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
   -webkit-appearance: none;
   margin: 0;
 }
-
-.priceInput{
- max-width: 85px;
-}
-
-.bidButton{
- width: 7em;
- max-height: 30px;
- text-align: center; 
- padding:3px;
-}
-

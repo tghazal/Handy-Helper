@@ -5,7 +5,7 @@ import axios from 'axios';
 import Map from './components/Map';
 import Spinner from '../../../../Spinner/Spinner';
 import API from '../../../../../utils/API';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Table } from 'reactstrap';
 
 
 //import bootbox from "../../../../../bootbox.min";
@@ -86,54 +86,48 @@ class SearchJobs extends React.Component {
     let jobsArray = [];
     if (this.state.jobs) {
       const myJobs = this.state.jobs;
-
       myJobs.forEach(elem => {
-        let address = elem.address.address1 + "," + elem.address.address2 + "," + elem.address.state + "," + elem.address.city + "," + elem.address.zip
+        let address = elem.address.address1 + ', ' + elem.address.city
         jobsArray.push(
           <tr key={elem._id}>
-
-            <th scope="col-md-3">
+            <th className="align-middle">
               {elem.title}
             </th>
-
-            <th scope="col-md-3">
+            <td className="align-middle">
               {elem.category}
-            </th>
-
-            <th scope="col-md-3">
+            </td>
+            <td className="align-middle">
               {/* <a href ="#" onClick={()=>this.showDescription(elem.description)}>Description</a> */}
-              <Button onClick={this.toggle}><a href="#" onClick={() => this.showDescription(elem.description)}>Description</a></Button>
+              <span onClick={() => this.showDescription(elem.description)}>
+                <button className="btn btn-sm btn-secondary" onClick={this.toggle}>
+                  Description
+              </button>
+              </span>
               {/* MODAL */}
               <Modal isOpen={this.state.modal} toggle={this.toggle}>
                 <ModalHeader toggle={this.toggle}>Job Description</ModalHeader>
                 <ModalBody>
                   {elem.description}
                 </ModalBody>
-
                 <ModalFooter>
                   <Button color="danger" onClick={this.toggle}>Close</Button>
-
                 </ModalFooter>
               </Modal>
-            </th>
-
-            <th scope="col-md-3">
+            </td>
+            <td className="align-middle">
               {address}
-            </th>
-
-            <th scope="col-md-3">
-              <Input className="priceInput" placeholder="price $" id={elem._id} />
-            </th>
-
-            <th scope="col-md-3">
+            </td>
+            <td style={{ minWidth: '80px', maxWidth: '80px' }} className="input-group-sm align-middle">
+              <Input className="text-center" placeholder="$$$" id={elem._id} />
+            </td>
+            <td className="align-middle">
               {/* <button className="bidButton btn btn-primary text-center" onClick={() => this.makeBid(elem._id)} > Submit a bid </button> */}
-              <button onClick={(e) => { if (window.alert('Successfully Submitted!')) this.makeBid(elem._id) }}>
-                <a href="#" onClick={() => this.makeBid(elem._id)}>Bid</a>
+              <span onClick={() => this.makeBid(elem._id)}>
+                <button className="btn btn-sm btn-primary" onClick={(e) => { if (window.alert('Successfully Submitted!')) this.makeBid(elem._id) }}>
+                  Bid
               </button>
-            </th>
-
-
-
+              </span>
+            </td>
           </tr>
         )
       })
@@ -142,7 +136,7 @@ class SearchJobs extends React.Component {
     return (
       <div className="container text-center filler">
         <div className="row">
-          <div className="col">
+          <div className="col mt-4">
             <h1>Search</h1>
           </div>
         </div>
@@ -159,23 +153,32 @@ class SearchJobs extends React.Component {
           </FormGroup>
         </Form>
         <Map />
-        <div className="col-md-10 mb-5 mt-5 offset-md-1 ">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col-md-3">Title</th>
-                <th scope="col-md-3">Category</th>
-                <th scope="col-md-3">Description</th>
-                <th scope="col-md-3">Address</th>
-              </tr>
-            </thead>
-            <tbody>
+        <div className="col-md-10 mb-5 mt-4 offset-md-1 ">
+          {
 
-              {this.state.jobs ? jobsArray : "No Results."}
-
-            </tbody>
-          </table>
-
+            this.state.jobs ?
+              <div>
+                <h3 className="mb-4">Results</h3>
+                <div className="border border-dark">
+                  <Table responsive striped className="bg-light mb-0" size="sm">
+                    <thead >
+                      <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Address</th>
+                        <th>Price</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {jobsArray}
+                    </tbody>
+                  </Table>
+                </div>
+              </div>
+              : 'No Results :('
+          }
         </div>
         <Spinner isOpen={this.state.spinner} />
       </div>

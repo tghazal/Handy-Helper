@@ -40,9 +40,14 @@ a {
 .address {
     font-size: 16px;
     padding-top: 10px;
+}
 
 .searchJobsBtn {
     padding-top: 10px;
     position: relative;
     right: 15px
+}
+
+.job-section {
+    background: #EFEFEF;
 }

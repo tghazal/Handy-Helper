@@ -73,7 +73,7 @@ export default class Job extends React.Component {
                 {bids.length > 0 ? bids : <h3 className="ml-3 my-2">No bids yet :{'\('}</h3 >}
               </tbody>
             </Table>
-            <div className="mb-4" style={{ background: 'black', height: '2px' }} />
+            <div style={{ background: 'black', height: '2px' }} />
           </Collapse>
         </div>
         <UserModal modal={this.state.modal} toggleModal={this.toggleModal.bind(this)} userData={this.state.userData} active={this.props.active ? true : false} />
