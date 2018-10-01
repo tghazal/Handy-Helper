@@ -78,22 +78,22 @@ router.post("/saveimage", function (req, res) {
 });
 
 router.post("/savebid", function (req, res) {
- 
-  let bids = 
+
+  let bids =
   {
-    user:req.body.user,
-    price:req.body.priceNumber,
-    status:req.body.status,
+    user: req.body.user,
+    price: req.body.priceNumber,
+    status: req.body.status,
   }
   console.log(bids)
   console.log(req.body.jobId)
   models.Job.findOneAndUpdate({ _id: req.body.jobId }, { bids: bids })
-    .then( dbModel => console.log(dbModel))
+    .then(dbModel => console.log(dbModel))
     .then(() => {
-      models.UserData.findOneAndUpdate({_id:req.body.user},{$push:{myBids:req.body.jobId}})
-        .then(data =>res.json("successfully submitted a bid"))
+      models.UserData.findOneAndUpdate({ _id: req.body.user }, { $push: { myBids: req.body.jobId } })
+        .then(data => res.json("successfully submitted a bid"))
     })
-     
+
     .catch(err => console.error(err));
 });
 
@@ -115,9 +115,29 @@ router.get('/userData/populate/:id/:field', ctrl.UserData.populate);
 router.delete('/userData/delete', ctrl.UserData.delete);
 router.put('/userData/update/:id/:method', ctrl.UserData.put);
 
+// Bid
+
+router.put('/bid/confirm', (req, res) => {
+  models.Job.findById(req.body.jobId)
+    .then(job => {
+      const bids = [...job.bids];
+      bids.forEach(bid => {
+        if (req.body.userId == bid.user) bid.status = 'active'
+        else bid.status = 'denied'
+      })
+      return bids;
+    })
+    .then(bids => {
+      models.Job.findByIdAndUpdate(req.body.jobId, { bids: bids }, { new: true })
+        .then(job => res.json(job))
+        .catch(err => console.error(err))
+    })
+    .catch(err => console.error(err))
+})
+
 router.post("/savebid", function (req, res) {
-  console.log("in routes update image " + req.body.id + "price"+req.body.price)
-  let bids ={user:req.body.user,price:req.body.price,status:"pending"}
+  console.log("in routes update image " + req.body.id + "price" + req.body.price)
+  let bids = { user: req.body.user, price: req.body.price, status: "pending" }
   console.log(bids)
   // models.jobs.findOneAndUpdate({ _id: req.body.id }, { bids: bids })
   //   .then(dbModel => res.json(dbModel))

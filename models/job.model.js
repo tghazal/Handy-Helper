@@ -27,7 +27,8 @@ const jobSchema = new Schema({
       price: Number,
       status: {
         type: String,
-        enum: ['pending', 'active', 'completed', 'failed']
+        enum: ['pending', 'denied', 'active', 'completed', 'failed'],
+        default: 'pending'
       }
     }
   ]
