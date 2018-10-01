@@ -39,6 +39,7 @@ export default class Home extends React.Component {
               <Dropzone width="100%" onDrop={this.props.onDrop} className="img-thumbnail" ><img className="img-thumbnail" width="100%" height="100%" src={this.props.mainState.image ? this.props.mainState.image : "../../../../../images/profileImage.png"} className="img-responsive" /></Dropzone>
 
             </div>
+
             <div className="col-6 col-md flex-column justify-content-between align-self-stretch p-3 p-md-4">
               <h1>
                 {this.props.mainState.name}
@@ -46,15 +47,20 @@ export default class Home extends React.Component {
               <h3>
                 {this.props.mainState.email}
               </h3>
+
               <div className="d-flex justify-content-around">
                 <div class="col align-self-center">
+                  <div class="row">
                   <Link to="/main/post-job" className="w-100 mr-1" style={{ maxWidth: '300px' }}><button className="btn btn-primary btn-block">Post a Job</button></Link>
-                  <Link to="/main/search-jobs" className="w-100 ml-1" style={{ maxWidth: '300px' }}><button className="btn btn-primary btn-block">Search jobs</button></Link>
+                  </div>
+                  <div class="row" className="searchJobsBtn">
+                  <Link to="/main/search-jobs" className="w-100 ml-1" style={{ maxWidth: '300px' }}><button className="btn btn-primary btn-block">Search Jobs</button></Link>
+                  </div>
                 </div></div>
             </div>
+
             <div className="col-6 col-md flex-column justify-content-between align-self-stretch p-3 p-md-4">
               <h3>Address:
-
                 <br />
                 <div className="address">
                   {this.props.mainState.address1}
@@ -66,11 +72,8 @@ export default class Home extends React.Component {
                   <br />
                   {this.props.mainState.zip}
                 </div>
-
               </h3>
               <a href="" onClick={this.props.onView}>Edit Address</a>
-
-
             </div>
           </div>
 
