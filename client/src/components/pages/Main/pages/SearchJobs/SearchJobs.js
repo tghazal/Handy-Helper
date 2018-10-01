@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './SearchJobs.css';
 import { Form, FormGroup, Input } from 'reactstrap';
 import axios from 'axios';
@@ -134,7 +134,7 @@ class SearchJobs extends React.Component {
     }
 
     return (
-      <div className="container text-center filler">
+      <div className="container-fluid text-center filler">
         <div className="row">
           <div className="col mt-4">
             <h1>Search</h1>
@@ -153,32 +153,37 @@ class SearchJobs extends React.Component {
           </FormGroup>
         </Form>
         <Map />
-        <div className="col-md-10 mb-5 mt-4 offset-md-1 ">
-          {
-
-            this.state.jobs ?
-              <div>
-                <h3 className="mb-4">Results</h3>
-                <div className="border border-dark">
-                  <Table responsive striped className="bg-light mb-0" size="sm">
-                    <thead >
-                      <tr>
-                        <th>Title</th>
-                        <th>Category</th>
-                        <th>Description</th>
-                        <th>Address</th>
-                        <th>Price</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {jobsArray}
-                    </tbody>
-                  </Table>
+        <div className="row d-flex justify-content-center">
+          <div className="col">
+            {
+              this.state.jobs ?
+                <Fragment>
+                  <div className="border mb-4">
+                    <Table striped hover className="bg-light mb-0 border" size="sm">
+                      <thead>
+                        <tr>
+                          <th>Title</th>
+                          <th>Category</th>
+                          <th>Description</th>
+                          <th>Address</th>
+                          <th>Price</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {jobsArray}
+                      </tbody>
+                    </Table>
+                  </div>
+                </Fragment>
+                :
+                <div className="row d-flex justify-content-center">
+                  <div className="col-auto">
+                    <h3 className="bg-light p-3 border rounded">No Results :{'\('}</h3>
+                  </div>
                 </div>
-              </div>
-              : 'No Results :('
-          }
+            }
+          </div>
         </div>
         <Spinner isOpen={this.state.spinner} />
       </div>
