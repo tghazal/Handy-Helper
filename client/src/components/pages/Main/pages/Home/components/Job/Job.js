@@ -57,27 +57,27 @@ export default class Job extends React.Component {
       <div className="row">
         <div className="col p-0">
           <div className="row border-bottom p-2 mx-0" >
-            <div className="col-8 d-flex align-items-end p-0">
-              {job.title}
+            <div className="col col-sm d-flex align-items-end pl-0 py-0 pr-2">
+              <strong>{job.title}</strong>
             </div>
-            <div className="col-2 d-flex align-items-end p-0">
+            <div className="col-4 d-flex align-items-end p-0">
               {job.category}
             </div>
-            <div className="col d-flex align-items-end justify-content-end p-0">
+            <div className="col-auto d-flex align-items-end justify-content-end p-0">
               <FaExclamationCircle size="1.5em" color={this.props.color} className="pointer" onClick={this.toggleCollapse.bind(this)} />
             </div>
           </div>
           <Collapse isOpen={this.state.collapse}>
             <Table hover className="mb-0">
               <tbody style={{ background: '#EFEFEF' }}>
-                {bids.length > 0 ? bids : <h3 className="ml-3 my-2">No bids yet :{'\('}</h3 >}
+                {bids.length > 0 ? bids : <tr><td><h3 className="ml-3 my-2">No bids yet :{'('}</h3 ></td></tr>}
               </tbody>
             </Table>
             <div style={{ background: 'black', height: '2px' }} />
           </Collapse>
         </div>
         <UserModal modal={this.state.modal} toggleModal={this.toggleModal.bind(this)} userData={this.state.userData} active={this.props.active ? true : false} />
-      </div>
+      </div >
     )
   }
 }

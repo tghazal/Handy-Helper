@@ -179,7 +179,7 @@ class SearchJobs extends React.Component {
                 :
                 <div className="row d-flex justify-content-center">
                   <div className="col-auto">
-                    <h3 className="bg-light p-3 border rounded">No Results :{'\('}</h3>
+                    <h3 className="bg-light p-3 border rounded">No Results :{'('}</h3>
                   </div>
                 </div>
             }

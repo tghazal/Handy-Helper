@@ -4,6 +4,7 @@ var models = require("../models");
 var fs = require("fs");
 var multer = require('multer');
 const ctrl = require('./controller');
+const mongoose = require('mongoose');
 
 // get user data using email
 router.get("/getUserInfo/:email", function (req, res) {
@@ -97,26 +98,6 @@ router.post("/savebid", function (req, res) {
     .catch(err => console.error(err));
 });
 
-// rest API
-/*-------------------------------------------------------*/
-
-// Job
-router.get('/job', ctrl.Job.find);
-router.get('/job/:id', ctrl.Job.findById);
-router.get('/job/populate/:id/:field', ctrl.Job.populate);
-router.delete('/job/delete', ctrl.Job.delete);
-router.put('/job/update/:id/:method', ctrl.Job.put);
-router.post('/job/post', ctrl.Job.post);
-
-// UserData
-router.get('/userData', ctrl.UserData.find);
-router.get('/userData/:id', ctrl.UserData.findById);
-router.get('/userData/populate/:id/:field', ctrl.UserData.populate);
-router.delete('/userData/delete', ctrl.UserData.delete);
-router.put('/userData/update/:id/:method', ctrl.UserData.put);
-
-// Bid
-
 router.put('/bid/confirm', (req, res) => {
   models.Job.findById(req.body.jobId)
     .then(job => {
@@ -144,5 +125,40 @@ router.post("/savebid", function (req, res) {
   //   .catch(err => res.status(422).json(err));
 });
 
+// rest API
+/*-------------------------------------------------------*/
+
+// Job
+router.get('/job', ctrl.Job.find);
+router.get('/job/:id', ctrl.Job.findById);
+router.get('/job/populate/:id/:field', ctrl.Job.populate);
+router.delete('/job/delete', ctrl.Job.delete);
+router.put('/job/update/:id/:method', ctrl.Job.put);
+router.post('/job/post', ctrl.Job.post);
+
+// UserData
+router.get('/userData', ctrl.UserData.find);
+router.get('/userData/:id', ctrl.UserData.findById);
+router.get('/userData/populate/:id/:field', ctrl.UserData.populate);
+router.delete('/userData/delete', ctrl.UserData.delete);
+router.put('/userData/update/:id/:method', ctrl.UserData.put);
+
+// Bids
+router.get('/bids', (req, res) => {
+  const jobIds = []
+  req.query.jobIds.forEach(id => {
+    const objectId = mongoose.Types.ObjectId(id);
+    jobIds.push(objectId);
+  })
+  models.Job.find({
+    '_id': {
+      $in: jobIds
+    }
+  })
+    .then(jobs => {
+      res.send(jobs)
+    })
+    .catch(err => res.status(422).json(err));
+})
 
 module.exports = router;
