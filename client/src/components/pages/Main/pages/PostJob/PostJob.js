@@ -26,15 +26,17 @@ export default class PostJob extends React.Component {
     if ((!this.props.mainState.address1) || (!this.props.mainState.state) || (!this.props.mainState.city) || (!this.props.mainState.zip)) {
       address = "";
     }
-    else {
+    else
+     {
       if (this.props.mainState.address2) {
         address = this.props.mainState.address1 + " " + this.props.mainState.address2 + " " + this.props.mainState.state + " " + this.props.mainState.city + " " + this.props.mainState.zip
       }
       else {
         address = this.props.mainState.address1 + " " + this.props.mainState.state + " " + this.props.mainState.city + " " + this.props.mainState.zip
       }
+      this.setState({ address: address, address1: this.props.mainState.address1, address2: this.props.mainState.address2, state: this.props.mainState.state, city: this.props.mainState.city, zip: this.props.mainState.zip })
     }
-    this.setState({ address: address, address1: this.props.mainState.address1, address2: this.props.mainState.address2, state: this.props.mainState.state, city: this.props.mainState.city, zip: this.props.mainState.zip })
+   
   }
 
   handler = (event) => {
@@ -61,8 +63,8 @@ export default class PostJob extends React.Component {
     }
     else {
       address = this.state.address1 + " " + this.state.state + " " + this.state.city + " " + this.state.zip
-      this.setState({ address: address, address1: this.props.mainState.address1, address2: this.props.mainState.address2, state: this.props.mainState.state, city: this.props.mainState.city, zip: this.props.mainState.zip })
     }
+    this.setState({ address: address, address1: this.state.address1, address2: this.state.address2, state: this.state.state, city: this.state.city, zip: this.state.zip })
   }
 
 
@@ -170,7 +172,7 @@ export default class PostJob extends React.Component {
               </FormGroup>
               <FormGroup>
                 <Label>Address</Label>
-                <Input type="text" id="address-input" placeholder="address" name="address" value={this.state.address} readonly />
+                <Input type="text" id="address-input" placeholder="address" name="address" value={this.state.address} readonly="readonly" />
                 <a href="" onClick={this.viewAddress}>Add or Edit Address</a>
                 <FormFeedback>Plase add an address.</FormFeedback>
               </FormGroup>
