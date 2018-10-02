@@ -1,7 +1,6 @@
 import React from 'react';
 import './Header.css';
 import { Navbar, Nav } from 'reactstrap';
-import { Link } from 'react-router-dom';
 import AuthService from '../AuthService';
 import icon from '../../images/icon.png';
 
@@ -41,11 +40,11 @@ class Header extends React.Component {
           <div className="row">
             <div className="col px-0">
               <Navbar light expand="md">
-                <Link to={localStorage.getItem('id_token') ? '/main/home' : '/'} className="navbar-brand font-weight-bold p-0" id="brand">
+                <a href={localStorage.getItem('id_token') ? '/main/home' : '/'} className="navbar-brand font-weight-bold p-0" id="brand">
                   <div className="btn btn-secondary p-1">
                     <img className="logo" style={{ height: '28px' }} src={icon} alt="icon" />
                   </div>
-                </Link>
+                </a>
                 <Nav className="ml-auto" navbar>
                   {localStorage.getItem('id_token') ? <Logout onClick={this.handleLogout.bind(this)} /> : <Login />}
                 </Nav>

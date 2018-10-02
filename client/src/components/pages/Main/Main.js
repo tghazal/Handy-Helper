@@ -40,6 +40,34 @@ class Main extends Component {
     });
   };
 
+  getBidData() {
+    const jobIds = this.state.myBids;
+    axios.get('/api/bids', { params: { jobIds: jobIds } })
+      .then(res => {
+        const bids = []
+        res.data.forEach(job => {
+          job.bids.forEach(bid => {
+            if (bid.user === this.state.id) {
+              const bidInfo = {
+                status: bid.status,
+                price: bid.price,
+                address: job.address,
+                title: job.title,
+                category: job.category,
+                description: job.description,
+                ownerId: job.owner
+              }
+              bids.push(bidInfo);
+            }
+          })
+        })
+        this.setState({
+          myBids: bids
+        })
+      })
+      .catch(err => console.log(err));
+  }
+
   getUserInfo = (email) => {
     API.getUserInfoFromDB(email)
       .then(res => {
@@ -53,6 +81,7 @@ class Main extends Component {
           skills: data.skills,
           id: data._id,
           myJobs: data.myJobs,
+          myBids: data.myBids,
           address1: address ? address.address1 : null,
           address2: address ? address.address2 : null,
           state: address ? address.state : null,
@@ -60,6 +89,9 @@ class Main extends Component {
           zip: address ? address.zip : null,
           image: buf ? buf : null
         })
+      })
+      .then(() => {
+        this.getBidData()
       })
       .catch(err => console.log(err));
   }

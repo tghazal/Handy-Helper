@@ -19,8 +19,10 @@ export default class Bid extends React.Component {
         <td width="30%" className="align-middle px-1" style={{ maxWidth: '60px' }}>
           ${this.props.bid.price}.00
         </td>
-        <td width="30%" className="px-1"><button className="btn btn-circle p-0" onClick={() => this.props.getUserInfo(this.props.bid.user)}>
-          <FaUserCircle size="1.8em" /></button>
+        <td width="30%" className="px-1">
+          <button className="btn btn-circle p-0" onClick={() => this.props.getUserInfo(this.props.bid.user)}>
+            <FaUserCircle size="1.8em" />
+          </button>
         </td>
         <td width="30%" className="align-middle text-right pr-2">
           {this.props.bid.status === 'active' ? active : pending}

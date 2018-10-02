@@ -1,7 +1,7 @@
 module.exports = {
 
   find: (req, res, model) => {
-    model.find(req.params)
+    model.find(req.query)
       .then(dbItem => res.json(dbItem))
       .catch(err => {
         console.error(err);
