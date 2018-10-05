@@ -1,29 +1,22 @@
-# Create React Express App
+# Handy Helper 
 
-## About This Boilerplate
+## About This App
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+Full Stack App to help people finding handy man for their jobs, who can be any one not just a proffesional handy man , so pepole can register and create their profiles ,listing their skills and either posting a job or searching for jobs near them. Using React in front-end  Mongoose for storing data in back-end and JWT( Json Web Token ) for user authenticaion.
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+## Technologies used 
+* React 
+* React starp
+* Mongoose 
+* Node.js
+* Express.js
+* Google MAp API
 
-## Starting the app locally
+## Get Started
+clone this app and then type yarn install to install all the dependencies needed , create .env file with this line of code inside  (JWT_SECRET=supersecretsecret) then type yarn start. 
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+### DEMO
 
-```
-yarn install
-```
+A demo of this program can be accessed at this deployed link:
 
-This should install node modules within the server and the client folder.
 
-After both installations complete, run the following command in your terminal:
-
-```
-yarn start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
